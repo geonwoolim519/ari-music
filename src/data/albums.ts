@@ -1,3 +1,5 @@
+import { asset } from "../lib/asset";
+
 export type AlbumId =
   | "gyeonggi"
   | "jindo"
@@ -30,8 +32,8 @@ export const albums: Album[] = [
   {
     id: "gyeonggi",
     name: "경기아리랑",
-    cover: "/covers/gyeonggi.jpg?v=2",
-    hero: "/covers/gyeonggi-hero.jpg?v=1",
+    cover: asset("covers/gyeonggi.jpg?v=2"),
+    hero: asset("covers/gyeonggi-hero.jpg?v=1"),
     theme: "#A48D23",
     bar: "#3F3610",
     description: [
@@ -63,8 +65,8 @@ export const albums: Album[] = [
   {
     id: "jindo",
     name: "진도아리랑",
-    cover: "/covers/jindo.jpg?v=2",
-    hero: "/covers/jindo-hero.jpg?v=1",
+    cover: asset("covers/jindo.jpg?v=2"),
+    hero: asset("covers/jindo-hero.jpg?v=1"),
     theme: "#6A87B2",
     bar: "#3A4E6E",
     description: [
@@ -96,8 +98,8 @@ export const albums: Album[] = [
   {
     id: "miryang",
     name: "밀양아리랑",
-    cover: "/covers/miryang.jpg?v=2",
-    hero: "/covers/miryang-hero.jpg?v=1",
+    cover: asset("covers/miryang.jpg?v=2"),
+    hero: asset("covers/miryang-hero.jpg?v=1"),
     theme: "#4C5530",
     bar: "#2A3018",
     description: [
@@ -130,8 +132,8 @@ export const albums: Album[] = [
   {
     id: "jeongseon",
     name: "정선아리랑",
-    cover: "/covers/jeongseon.jpg?v=2",
-    hero: "/covers/jeongseon-hero.jpg?v=1",
+    cover: asset("covers/jeongseon.jpg?v=2"),
+    hero: asset("covers/jeongseon-hero.jpg?v=1"),
     theme: "#ABA95A",
     bar: "#4A4A22",
     description: [
@@ -163,8 +165,8 @@ export const albums: Album[] = [
   {
     id: "hyundai",
     name: "현대아리랑",
-    cover: "/covers/hyundai.jpg?v=2",
-    hero: "/covers/hyundai-hero.jpg?v=1",
+    cover: asset("covers/hyundai.jpg?v=2"),
+    hero: asset("covers/hyundai-hero.jpg?v=1"),
     theme: "#775445",
     bar: "#3A2822",
     description: [

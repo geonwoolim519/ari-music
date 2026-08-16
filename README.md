@@ -2,7 +2,11 @@
 
 아리랑 인터랙티브 디지털 아카이브 프로토타입.
 
-## 실행
+## 바로 보기
+
+https://geonwoolim519.github.io/ari-music/
+
+## 로컬 실행
 
 ```bash
 npm install

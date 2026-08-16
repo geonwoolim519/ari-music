@@ -1,7 +1,7 @@
 export function Logo({ size = 36 }: { size?: number }) {
   return (
     <img
-      src="/logo.png?v=2"
+      src={`${import.meta.env.BASE_URL}logo.png?v=2`}
       alt="Ari Music"
       width={size}
       height={size}

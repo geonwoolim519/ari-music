@@ -1,3 +1,5 @@
+import { asset } from "../lib/asset";
+
 export type HistorySlide = {
   paragraphs: string[];
   quote?: string;
@@ -13,7 +15,7 @@ export const historySlides: HistorySlide[] = [
       "아리랑 하면 대표적으로 떠올리는 곡으로 정선 아리랑, 밀양 아리랑, 진도 아리랑, 본조 아리랑 등이 있다. 이중 원조 아리랑이라고 할 수 있는 것이 강원도의 정선 아리랑이다. 많은 학자들은 아리랑이 강원도의 향토 민요에서 발전한 것으로 본다.",
       "19세기 경복궁 중건을 위해 전국 각지의 농민들이 부역에 동원 되는데, 이들을 위로하기 위해 아리랑 부르기 대회를 개최하였고, 아마도 이때 이후에 전국으로 퍼져 각 지역의 음악적 특징과 이야기를 담은 새로운 버전의 수많은 아리랑을 탄생시키게 된 것으로 보인다.",
     ],
-    image: "/history/slide1.jpg",
+    image: asset("history/slide1.jpg"),
     imageClass: "mt-[10px] w-full rounded-[10px] object-cover",
   },
   {
@@ -23,7 +25,7 @@ export const historySlides: HistorySlide[] = [
     ],
     quote:
       "아리랑 아리랑 아라리요. 아리랑 고개를 넘어간다. 나를 버리고 가시는 님은 십리도 못가서 발병난다.",
-    image: "/history/slide2.jpg",
+    image: asset("history/slide2.jpg"),
     imageClass: "mt-[10px] w-full rounded-[10px] object-cover",
   },
   {
@@ -31,14 +33,14 @@ export const historySlides: HistorySlide[] = [
       "사실 이 본조 아리랑은 1926년 나운규가 감독한 영화 「아리랑」의 주제음악이었다. 일제 강점기 암울한 시대상을 담고 있는 이 영화는 항일 민족정신을 불러 일으키며 선풍적인 인기를 얻는다.",
       "영화에서 주인공이 마지막에 일본 순경에게 끌려갈 때 배경 음악이 바로 아리랑이다. 영화가 큰 성공을 거두면서 이 아리랑도 한국인 모두가 즐겨 부르는 민족의 노래가 된 것이다. 그리고 식민지 조국을 떠나 국외로 이주한 사람들에게 이 노래는 ‘고국’ 그 자체이기도 했다.",
     ],
-    image: "/history/slide3.jpg",
+    image: asset("history/slide3.jpg"),
     imageClass: "mx-auto mt-[12px] w-[72%] rounded-[8px] object-contain",
   },
   {
     paragraphs: [
       "아리랑은 때로는 삶의 애환을, 때로는 신명과 흥을 담아 우리의 삶을 위로해 주었다. 누구라도 부를 수 있고 누구라도 노랫말을 붙일 수 있었던 아리랑은 삶 그 자체이자 가장 보편적 예술이었다. 이름 없는 민중이 한 켜 한 켜 쌓으며 발전시켜 나간 이 위대한 문화유산은 세계에서도 그 가치를 인정받아 2012년 유네스코 인류무형문화유산으로 등재되었다.",
     ],
-    image: "/history/slide4.jpg",
+    image: asset("history/slide4.jpg"),
     imageClass: "mx-auto mt-[8px] w-full object-contain",
     caption: "< 전국 아리랑 지도 >",
   },
