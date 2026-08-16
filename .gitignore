@@ -1,0 +1,9 @@
+node_modules
+dist
+.DS_Store
+*.local
+.vite
+public/history/1896.jpg
+public/history/map.jpg
+public/history/poster.jpg
+public/history/sansuhwa.jpg
