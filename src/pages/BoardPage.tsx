@@ -5,12 +5,22 @@ import { useCommunityStore } from "../store/communityStore";
 
 function PencilIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M4 16.8V20h3.2L18.6 8.6l-3.2-3.2L4 16.8Z" fill="white" />
-      <path
-        d="M16.6 4.2a1.1 1.1 0 0 1 1.6 0l1.6 1.6a1.1 1.1 0 0 1 0 1.6l-1.4 1.4-3.2-3.2 1.4-1.4Z"
-        fill="white"
-      />
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <g
+        transform="rotate(-45 12 12)"
+        stroke="white"
+        strokeWidth="1.55"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M9 3.2h6v13.2L12 21.2 9 16.4V3.2Z" />
+        <path d="M9 6.4h6" />
+        <path d="M9 7.7h6" />
+        <path d="M9 16.4h6" />
+        <path d="M11 7.9v8.3" />
+        <path d="M13 7.9v8.3" />
+        <path d="M10.7 18.5h2.6" />
+      </g>
     </svg>
   );
 }

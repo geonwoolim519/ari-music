@@ -31,8 +31,35 @@ const albumPosts: BoardPost[] = [
   },
 ];
 
+const culturePosts: BoardPost[] = [
+  {
+    id: "culture-1",
+    boardId: "free",
+    title: "아리랑 최고",
+    body: "여기 외국인분들도 많으신데, 외국인분들도 우리 국악의 아름다움을 더 잘 아셨으면 좋겠습니다. 아리뮤직이 지역관광 활성화에도 도움이 되지 않을까라는 생각이 드네요.",
+  },
+  {
+    id: "culture-2",
+    boardId: "free",
+    title: "저 13년생인데 좋아하는 아이돌이 라방에서",
+    body: "아리랑 부르는 거 보고 저도 아리랑 듣고 싶어서 왔어요 ^^",
+  },
+  {
+    id: "culture-3",
+    boardId: "free",
+    title: "OMG Arirang",
+    body: "Really nice songs",
+  },
+  {
+    id: "culture-4",
+    boardId: "free",
+    title: "Am I the only one who found Seoul quite underrated?",
+    body: "I went to Korea in 2022, and Seoul had so many beautiful places. I strongly recommend Changdeokgung Palace. I was surprised by how big the Han River is. It was during COVID back then, but I want to go again.",
+  },
+];
+
 export const useCommunityStore = create<CommunityState>((set, get) => ({
-  posts: albumPosts,
+  posts: [...albumPosts, ...culturePosts],
   writeOpen: false,
   writeBoardId: null,
   openWrite: (boardId) => set({ writeOpen: true, writeBoardId: boardId }),

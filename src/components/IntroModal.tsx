@@ -46,7 +46,7 @@ export function IntroModal() {
               </div>
 
               <p className="text-[14px] leading-[1.7] text-[#222]">
-                서양의 고급 식당에서는 메인디시 전에 아뮤즈부쉬(Amuse-bouche: 입이
+                서양의 고급 식당에서는 메인디쉬 전에 아뮤즈부쉬(Amuse-bouche: 입이
                 즐거운), 즉 맛있는 한입거리를 내놓는다. ‘아리뮤직’은 음악계의
                 아뮤즈부쉬 - 아리랑을 대중들이 가볍게 즐길 수 있는 서비스이다.
               </p>

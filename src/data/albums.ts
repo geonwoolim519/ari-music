@@ -1,4 +1,5 @@
 import { asset } from "../lib/asset";
+import { cheerYoonLyrics, miryangUngsanLyrics } from "./lyrics";
 
 export type AlbumId =
   | "gyeonggi"
@@ -46,18 +47,21 @@ export const albums: Album[] = [
         id: "bonjo-arirang",
         title: "본조아리랑",
         albumId: "gyeonggi",
+        audioUrl: asset("audio/gyeonggi/bonjo-arirang.mp3"),
         lyrics: placeholderLyrics,
       },
       {
         id: "gu-arirang",
         title: "구아리랑",
         albumId: "gyeonggi",
+        audioUrl: asset("audio/gyeonggi/gu-arirang.mp3"),
         lyrics: placeholderLyrics,
       },
       {
         id: "gu-arirang-piano",
         title: "구아리랑 (Piano ver.)",
         albumId: "gyeonggi",
+        audioUrl: asset("audio/gyeonggi/gu-arirang-piano.mp3"),
         lyrics: placeholderLyrics,
       },
     ],
@@ -79,18 +83,21 @@ export const albums: Album[] = [
         id: "jindo-arirang",
         title: "진도아리랑",
         albumId: "jindo",
+        audioUrl: asset("audio/jindo/jindo-arirang.mp3"),
         lyrics: placeholderLyrics,
       },
       {
         id: "jindo-arirang-jangdan",
         title: "진도아리랑 (장단 ver.)",
         albumId: "jindo",
+        audioUrl: asset("audio/jindo/jindo-arirang-jangdan.mp3"),
         lyrics: placeholderLyrics,
       },
       {
         id: "jindo-arirang-piano",
         title: "진도아리랑 (Piano ver.)",
         albumId: "jindo",
+        audioUrl: asset("audio/jindo/jindo-arirang-piano.mp3"),
         lyrics: placeholderLyrics,
       },
     ],
@@ -113,19 +120,22 @@ export const albums: Album[] = [
         id: "miryang-arirang",
         title: "밀양아리랑",
         albumId: "miryang",
+        audioUrl: asset("audio/miryang/miryang-arirang.mp3"),
         lyrics: placeholderLyrics,
       },
       {
         id: "miryang-arirang-sorikkun",
         title: "밀양아리랑 (소리꾼 ver.)",
         albumId: "miryang",
+        audioUrl: asset("audio/miryang/miryang-arirang-sorikkun.mp3"),
         lyrics: placeholderLyrics,
       },
       {
         id: "miryang-arirang-ungsan",
         title: "밀양아리랑 (웅산 가창 ver.)",
         albumId: "miryang",
-        lyrics: placeholderLyrics,
+        audioUrl: asset("audio/miryang/miryang-arirang-ungsan.mp3"),
+        lyrics: miryangUngsanLyrics,
       },
     ],
   },
@@ -146,18 +156,21 @@ export const albums: Album[] = [
         id: "jeongseon-gin",
         title: "정선아리랑 (긴아리랑)",
         albumId: "jeongseon",
+        audioUrl: asset("audio/jeongseon/jeongseon-gin.mp3"),
         lyrics: placeholderLyrics,
       },
       {
         id: "jeongseon-yeokkeum",
         title: "정선아리랑 (엮음아리랑)",
         albumId: "jeongseon",
+        audioUrl: asset("audio/jeongseon/jeongseon-yeokkeum.mp3"),
         lyrics: placeholderLyrics,
       },
       {
         id: "jeongseon-ttaetmok",
         title: "정선아리랑 (뗏목아리랑)",
         albumId: "jeongseon",
+        audioUrl: asset("audio/jeongseon/jeongseon-ttaetmok.mp3"),
         lyrics: placeholderLyrics,
       },
     ],
@@ -180,18 +193,21 @@ export const albums: Album[] = [
         id: "cheer-national",
         title: "아리랑 응원가 (국민 ver.)",
         albumId: "hyundai",
+        audioUrl: asset("audio/hyundai/cheer-national.mp3"),
         lyrics: placeholderLyrics,
       },
       {
         id: "cheer-yoon",
         title: "아리랑 응원가 (윤도현 가창 ver.)",
         albumId: "hyundai",
-        lyrics: placeholderLyrics,
+        audioUrl: asset("audio/hyundai/cheer-yoon.mp3"),
+        lyrics: cheerYoonLyrics,
       },
       {
         id: "cheer-gayageum",
         title: "아리랑 응원가 (가야금 ver.)",
         albumId: "hyundai",
+        audioUrl: asset("audio/hyundai/cheer-gayageum.mp3"),
         lyrics: placeholderLyrics,
       },
     ],
@@ -208,6 +224,29 @@ export function getTrack(trackId: string) {
     if (track) return { track, album };
   }
   return undefined;
+}
+
+/** 타임스탬프.txt 기준 곡 길이(초) */
+export const TRACK_DURATION: Record<string, number> = {
+  "bonjo-arirang": 51,
+  "gu-arirang": 87,
+  "gu-arirang-piano": 97,
+  "jindo-arirang": 92,
+  "jindo-arirang-jangdan": 92,
+  "jindo-arirang-piano": 95,
+  "miryang-arirang": 49,
+  "miryang-arirang-sorikkun": 139,
+  "miryang-arirang-ungsan": 227,
+  "jeongseon-gin": 354,
+  "jeongseon-yeokkeum": 445,
+  "jeongseon-ttaetmok": 785,
+  "cheer-national": 200,
+  "cheer-yoon": 201,
+  "cheer-gayageum": 202,
+};
+
+export function getTrackDuration(track: Track) {
+  return TRACK_DURATION[track.id] ?? 0;
 }
 
 export const defaultTrack = albums[0].tracks[2];

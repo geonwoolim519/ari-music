@@ -62,3 +62,17 @@ export function CommunityIcon({ size = 26 }: { size?: number }) {
     </svg>
   );
 }
+
+export function SectionChevron({ size = 22 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M8.2 4.4 16.6 12 8.2 19.6"
+        stroke="currentColor"
+        strokeWidth="2.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}

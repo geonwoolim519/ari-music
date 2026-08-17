@@ -39,3 +39,12 @@ img {
 .phone-scroll {
   scrollbar-width: none;
 }
+
+.drag-scroll {
+  cursor: grab;
+}
+
+.drag-scroll[data-dragging="true"],
+.drag-scroll[data-dragging="true"] * {
+  cursor: grabbing;
+}

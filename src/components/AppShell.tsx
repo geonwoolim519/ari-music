@@ -1,9 +1,11 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { MiniPlayer } from "./MiniPlayer";
+import { AudioEngine } from "./AudioEngine";
 import { BottomNav } from "./BottomNav";
 import { IntroModal } from "./IntroModal";
 import { HistoryModal } from "./HistoryModal";
 import { LyricsModal } from "./LyricsModal";
+import { ArchiveVideoModal } from "./ArchiveVideoModal";
 import { Toast } from "./Toast";
 import { AddToPlaylistSheet } from "./AddToPlaylistSheet";
 import { WritePostModal } from "./WritePostModal";
@@ -33,10 +35,12 @@ export function AppShell() {
           <Outlet />
         </div>
         <MiniPlayer />
+        <AudioEngine />
         <BottomNav />
         <IntroModal />
         <HistoryModal />
         <LyricsModal />
+        <ArchiveVideoModal />
         <WritePostModal />
         <Toast />
         <AddToPlaylistSheet />
