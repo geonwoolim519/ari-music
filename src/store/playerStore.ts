@@ -3,12 +3,13 @@ import { getAlbum, getTrackDuration, type Track } from "../data/albums";
 
 type PlayerState = {
   currentTrack: Track | null;
+  queue: Track[];
   isPlaying: boolean;
   isMiniPlayerVisible: boolean;
   currentTime: number;
   duration: number;
   seekTo: number | null;
-  playTrack: (track: Track) => void;
+  playTrack: (track: Track, queue?: Track[]) => void;
   togglePlay: () => void;
   nextTrack: () => void;
   prevTrack: () => void;
@@ -17,15 +18,23 @@ type PlayerState = {
   setPlaybackTime: (currentTime: number, duration?: number) => void;
 };
 
+function queueFor(track: Track, queue?: Track[]) {
+  if (queue && queue.length > 0) return [...queue];
+  const album = getAlbum(track.albumId);
+  return album?.tracks ? [...album.tracks] : [track];
+}
+
 function skipTrack(direction: 1 | -1) {
-  const { currentTrack } = usePlayerStore.getState();
+  const { currentTrack, queue } = usePlayerStore.getState();
   if (!currentTrack) return;
-  const album = getAlbum(currentTrack.albumId);
-  if (!album) return;
-  const index = album.tracks.findIndex((track) => track.id === currentTrack.id);
-  const next = album.tracks[(index + direction + album.tracks.length) % album.tracks.length];
+  const list = queue.length > 0 ? queue : queueFor(currentTrack);
+  if (list.length === 0) return;
+  const index = list.findIndex((track) => track.id === currentTrack.id);
+  const from = index >= 0 ? index : 0;
+  const next = list[(from + direction + list.length) % list.length];
   usePlayerStore.setState({
     currentTrack: next,
+    queue: list,
     isPlaying: true,
     isMiniPlayerVisible: true,
     currentTime: 0,
@@ -36,14 +45,16 @@ function skipTrack(direction: 1 | -1) {
 
 export const usePlayerStore = create<PlayerState>((set, get) => ({
   currentTrack: null,
+  queue: [],
   isPlaying: false,
   isMiniPlayerVisible: false,
   currentTime: 0,
   duration: 0,
   seekTo: null,
-  playTrack: (track) =>
+  playTrack: (track, queue) =>
     set({
       currentTrack: track,
+      queue: queueFor(track, queue),
       isPlaying: true,
       isMiniPlayerVisible: true,
       currentTime: 0,

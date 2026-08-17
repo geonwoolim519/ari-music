@@ -30,23 +30,35 @@ export function PlaylistPage() {
         <ProfileBadge />
       </header>
 
-      <div className="px-[22px] pb-[160px] pt-[20px]">
+      <div className="phone-scroll flex-1 overflow-y-auto px-[22px] pb-[160px] pt-[20px]">
         {items.length === 0 ? null : (
-          <ul>
-            {items.map((track) => (
-              <li key={track.id}>
-                <button
-                  type="button"
-                  className="flex w-full items-center gap-[14px] py-[14px] text-left"
-                  onClick={() => playTrack(track)}
-                >
-                  <VinylIcon />
-                  <span className="text-[16px] font-medium text-black">{track.title}</span>
-                </button>
-                <DashedRule />
-              </li>
-            ))}
-          </ul>
+          <>
+            <ul>
+              {items.map((track) => (
+                <li key={track.id}>
+                  <button
+                    type="button"
+                    className="flex w-full items-center gap-[14px] py-[14px] text-left"
+                    onClick={() => playTrack(track, items)}
+                  >
+                    <VinylIcon />
+                    <span className="text-[16px] font-medium text-black">{track.title}</span>
+                  </button>
+                  <DashedRule />
+                </li>
+              ))}
+            </ul>
+            <button
+              type="button"
+              className="mx-auto mt-[22px] flex h-[40px] w-[128px] items-center justify-center gap-[6px] rounded-full bg-black text-[15px] font-extrabold text-white"
+              onClick={() => playTrack(items[0], items)}
+            >
+              <svg width="12" height="14" viewBox="0 0 14 16" fill="currentColor">
+                <path d="M1.2 1.1v13.8L13 8 1.2 1.1Z" />
+              </svg>
+              재생
+            </button>
+          </>
         )}
       </div>
     </div>
