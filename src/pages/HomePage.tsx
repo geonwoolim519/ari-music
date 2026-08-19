@@ -1,11 +1,21 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import { albums } from "../data/albums";
 import { archiveVideos } from "../data/archive";
+import { asset } from "../lib/asset";
 import { useDragScroll } from "../hooks/useDragScroll";
 import { usePlayerStore } from "../store/playerStore";
 import { useUiStore } from "../store/uiStore";
 import { AppHeader } from "../components/AppHeader";
-import { MusicNotesIcon, SectionChevron } from "../components/Icons";
+import {
+  HistoryClockIcon,
+  MapPinIcon,
+  MenuIcon,
+  SearchIcon,
+  FingerIcon,
+  SectionChevron,
+} from "../components/Icons";
 
 const archivePages = Array.from(
   { length: Math.ceil(archiveVideos.length / 2) },
@@ -29,10 +39,12 @@ function YoutubePlayBadge() {
 export function HomePage() {
   const navigate = useNavigate();
   const openIntro = useUiStore((state) => state.openIntro);
+  const openManual = useUiStore((state) => state.openManual);
   const openHistory = useUiStore((state) => state.openHistory);
   const openArchiveVideo = useUiStore((state) => state.openArchiveVideo);
   const albumScrollRef = useDragScroll<HTMLDivElement>();
   const archiveScrollRef = useDragScroll<HTMLDivElement>({ pageSnap: true });
+  const [storyOpen, setStoryOpen] = useState(false);
 
   return (
     <div className="flex h-full flex-col bg-white">
@@ -42,58 +54,110 @@ export function HomePage() {
           <button
             type="button"
             onClick={() => navigate("/studio")}
-            className="flex h-[62px] items-center justify-between rounded-[31px] px-[22px] text-left shadow-[0_8px_18px_rgba(0,0,0,0.12)]"
-            style={{
-              background:
-                "linear-gradient(90deg, #2af0ff 0%, #c8ff2e 42%, #ffe14a 100%)",
-            }}
+            className="relative h-[132px] overflow-hidden rounded-[28px] text-left shadow-[0_8px_18px_rgba(0,0,0,0.12)]"
           >
-            <span className="text-[18px] font-extrabold tracking-[-0.03em] text-black">
-              아리랑 스튜디오
-            </span>
-            <MusicNotesIcon size={30} />
-          </button>
-
-          <button
-            type="button"
-            onClick={openIntro}
-            className="flex h-[52px] items-center rounded-[26px] px-[22px] text-left shadow-[0_8px_18px_rgba(0,0,0,0.12)]"
-            style={{
-              background: "linear-gradient(90deg, #cb6fe5 0%, #c86de2 100%)",
-            }}
-          >
-            <span className="text-[17px] font-extrabold tracking-[-0.03em] text-black">
-              아리뮤직 소개
+            <img
+              src={asset("studio-ink.jpg")}
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <span className="absolute inset-0 bg-gradient-to-r from-white/82 via-white/55 to-transparent" />
+            <span className="relative z-[1] flex h-full flex-col justify-center px-[22px] pr-[88px]">
+              <span className="text-[22px] font-extrabold tracking-[-0.04em] text-black">
+                아리랑 스튜디오
+              </span>
+              <span className="mt-[8px] text-[13px] font-medium leading-[1.45] tracking-[-0.02em] text-[#222]">
+                국악기 소리와 장단으로
+                <br />
+                나만의 아리랑을 만들어보세요
+              </span>
             </span>
           </button>
 
-          <button
-            type="button"
-            onClick={openHistory}
-            className="flex h-[52px] items-center rounded-[26px] px-[22px] text-left shadow-[0_8px_18px_rgba(0,0,0,0.12)]"
-            style={{
-              background: "linear-gradient(90deg, #e1aaf0 0%, #deadeb 100%)",
-            }}
-          >
-            <span className="text-[17px] font-extrabold tracking-[-0.03em] text-black">
-              아리랑의 역사
-            </span>
-          </button>
+          <div>
+            <button
+              type="button"
+              onClick={() => setStoryOpen((open) => !open)}
+              className="flex h-[52px] w-full items-center gap-[10px] rounded-[26px] px-[18px] text-left shadow-[0_8px_18px_rgba(0,0,0,0.12)]"
+              style={{
+                background: "linear-gradient(90deg, #e8b4f0 0%, #e5b0ed 100%)",
+              }}
+              aria-expanded={storyOpen}
+            >
+              <span className="text-black">
+                <MenuIcon size={22} />
+              </span>
+              <span className="text-[17px] font-extrabold tracking-[-0.03em] text-black">
+                아리랑 이야기
+              </span>
+            </button>
+
+            <AnimatePresence initial={false}>
+              {storyOpen ? (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.22 }}
+                  className="overflow-hidden"
+                >
+                  <div className="ml-[2px] mt-[8px] w-[220px] overflow-hidden rounded-[6px] border border-black bg-white">
+                    <button
+                      type="button"
+                      className="flex w-full items-center gap-[10px] border-b border-black px-[12px] py-[11px] text-left"
+                      onClick={openIntro}
+                    >
+                      <SearchIcon size={18} />
+                      <span className="text-[14px] font-semibold tracking-[-0.02em] text-black">
+                        아리뮤직 소개
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      className="flex w-full items-center gap-[10px] border-b border-black px-[12px] py-[11px] text-left"
+                      onClick={openManual}
+                    >
+                      <FingerIcon size={18} />
+                      <span className="text-[14px] font-semibold tracking-[-0.02em] text-black">
+                        사용설명서
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      className="flex w-full items-center gap-[10px] border-b border-black px-[12px] py-[11px] text-left"
+                      onClick={openHistory}
+                    >
+                      <HistoryClockIcon size={18} />
+                      <span className="text-[14px] font-semibold tracking-[-0.02em] text-black">
+                        아리랑의 역사
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      className="flex w-full items-center gap-[10px] px-[12px] py-[11px] text-left"
+                      onClick={() => navigate("/map")}
+                    >
+                      <MapPinIcon size={18} />
+                      <span className="text-[14px] font-semibold tracking-[-0.02em] text-black">
+                        아리랑 문화지도
+                      </span>
+                    </button>
+                  </div>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
+          </div>
         </div>
 
         <section className="mt-[28px]">
-          <button
-            type="button"
-            className="mb-[14px] flex items-center gap-[4px]"
-            onClick={() => navigate("/library")}
-          >
+          <div className="mb-[14px] flex items-center gap-[4px]">
             <h2 className="text-[20px] font-extrabold tracking-[-0.04em] text-black">
-              다양한 아리랑 앨범
+              지역별 아리랑 앨범
             </h2>
             <span className="text-[#8a8a8a]">
               <SectionChevron size={22} />
             </span>
-          </button>
+          </div>
 
           <div
             ref={albumScrollRef}

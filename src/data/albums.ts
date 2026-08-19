@@ -6,6 +6,7 @@ export type AlbumId =
   | "jindo"
   | "miryang"
   | "jeongseon"
+  | "gangwon"
   | "hyundai";
 
 export type Track = {
@@ -118,9 +119,9 @@ export const albums: Album[] = [
     tracks: [
       {
         id: "miryang-arirang",
-        title: "밀양아리랑",
+        title: "밀양아리랑 (송소희 가창 ver.)",
         albumId: "miryang",
-        audioUrl: asset("audio/miryang/miryang-arirang.mp3"),
+        audioUrl: asset("audio/miryang/miryang-arirang-songsohee.mp3"),
         lyrics: placeholderLyrics,
       },
       {
@@ -176,12 +177,49 @@ export const albums: Album[] = [
     ],
   },
   {
+    id: "gangwon",
+    name: "강원도아리랑",
+    cover: asset("covers/gangwon.jpg?v=2"),
+    hero: asset("covers/gangwon-hero.jpg?v=2"),
+    theme: "#6B4A2E",
+    bar: "#3D2A1C",
+    description: [
+      "강원도아리랑은 강원 산간 지역의 노동요·토속민요인 ‘자진아라리’에서 비롯되어, 일제강점기를 거치며 널리 불리게 된 민요입니다.",
+      "강원도를 넘어 경기 동부, 충북 산간, 경북 북부까지 폭넓게 전승되고 있습니다.",
+      "엇모리장단(3·2·3·2의 혼합 리듬)과 메나리토리(미·솔·라·도·레)의 음계를 바탕으로 합니다.",
+      "대표 가사 ‘아주까리 동백아 피지 마라’에는 그리움과 허전함을 해학과 애잔함으로 풀어낸 정서가 담겨 있습니다.",
+    ],
+    tracks: [
+      {
+        id: "gangwon-arirang",
+        title: "강원도아리랑",
+        albumId: "gangwon",
+        audioUrl: asset("audio/gangwon/gangwon-arirang.mp3"),
+        lyrics: placeholderLyrics,
+      },
+      {
+        id: "gangwon-arirang-jangdan",
+        title: "강원도아리랑 (장단 ver.)",
+        albumId: "gangwon",
+        audioUrl: asset("audio/gangwon/gangwon-arirang-jangdan.mp3"),
+        lyrics: placeholderLyrics,
+      },
+      {
+        id: "gangwon-arirang-piano",
+        title: "강원도아리랑 (피아노 ver.)",
+        albumId: "gangwon",
+        audioUrl: asset("audio/gangwon/gangwon-arirang-piano.mp3"),
+        lyrics: placeholderLyrics,
+      },
+    ],
+  },
+  {
     id: "hyundai",
     name: "현대아리랑",
-    cover: asset("covers/hyundai.jpg?v=2"),
-    hero: asset("covers/hyundai-hero.jpg?v=1"),
-    theme: "#775445",
-    bar: "#3A2822",
+    cover: asset("covers/hyundai.jpg?v=4"),
+    hero: asset("covers/hyundai-hero.jpg?v=4"),
+    theme: "#715CB7",
+    bar: "#4A3A78",
     description: [
       "한민족의 영혼이 담긴 전통 가락 ‘아리랑’이 시대와 장르의 경계를 넘어 현대적 감각으로 재탄생합니다.",
       "이번 <현대 아리랑> 앨범은 오늘날을 살아가는 우리에게 승리와 희망, 그리고 뜨거운 울림을 전하는 다채로운 현대적 편곡 트랙들로 구성되어 있습니다.",
@@ -234,12 +272,15 @@ export const TRACK_DURATION: Record<string, number> = {
   "jindo-arirang": 92,
   "jindo-arirang-jangdan": 92,
   "jindo-arirang-piano": 95,
-  "miryang-arirang": 49,
+  "miryang-arirang": 300,
   "miryang-arirang-sorikkun": 139,
   "miryang-arirang-ungsan": 227,
   "jeongseon-gin": 354,
   "jeongseon-yeokkeum": 445,
   "jeongseon-ttaetmok": 785,
+  "gangwon-arirang": 72,
+  "gangwon-arirang-jangdan": 87,
+  "gangwon-arirang-piano": 76,
   "cheer-national": 200,
   "cheer-yoon": 201,
   "cheer-gayageum": 202,

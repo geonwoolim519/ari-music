@@ -5,6 +5,8 @@ import { LibraryPage } from "./pages/LibraryPage";
 import { PlaylistPage } from "./pages/PlaylistPage";
 import { AlbumPage } from "./pages/AlbumPage";
 import { StudioPage } from "./pages/StudioPage";
+import { CultureMapPage } from "./pages/CultureMapPage";
+import { CultureCityPage } from "./pages/CultureCityPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { CommunityPage } from "./pages/CommunityPage";
 import { BoardPage } from "./pages/BoardPage";
@@ -22,6 +24,8 @@ export default function App() {
           <Route path=":boardId" element={<BoardPage />} />
         </Route>
         <Route path="/studio" element={<StudioPage />} />
+        <Route path="/map" element={<CultureMapPage />} />
+        <Route path="/map/:cityId" element={<CultureCityPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>

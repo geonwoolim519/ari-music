@@ -27,7 +27,7 @@ const albumPosts: BoardPost[] = [
     id: "album-3",
     boardId: "album",
     title: "아리랑 야르",
-    body: "개좋네 진짜",
+    body: "진짜 좋네",
   },
 ];
 

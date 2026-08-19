@@ -55,23 +55,34 @@ export function LyricsModal() {
           animate={{ y: 0 }}
           exit={{ y: "100%" }}
           transition={{ type: "spring", damping: 28, stiffness: 280 }}
+          drag="y"
+          dragConstraints={{ top: 0, bottom: 0 }}
+          dragElastic={{ top: 0.04, bottom: 0.55 }}
+          dragMomentum={false}
+          onDragEnd={(_, info) => {
+            if (info.offset.y > 90 || info.velocity.y > 650) close();
+          }}
           style={{ background: album?.theme ?? "#A0A355" }}
         >
-          <div className="flex h-full flex-col px-[22px] pt-[10px] text-white">
+          <div className="flex h-full flex-col px-[22px] pt-[4px] text-white">
             <button
               type="button"
-              className="mx-auto mb-[14px] h-[5px] w-[48px] rounded-full bg-white/90"
+              className="flex h-[28px] w-full items-center justify-center"
               aria-label="가사 닫기"
               onClick={close}
-            />
-            <p className="text-[20px] font-extrabold leading-[1.25]">{album?.name} 앨범</p>
+            >
+              <span className="h-[5px] w-[48px] rounded-full bg-white/90" />
+            </button>
+            <p className="mt-[6px] text-[20px] font-extrabold leading-[1.25]">{album?.name} 앨범</p>
             <p className="mt-[4px] text-[15px] font-medium text-white/95">{track.title}</p>
 
-            <img
-              src={album?.cover}
-              alt=""
-              className="mx-auto mt-[22px] h-[210px] w-[210px] rounded-[22px] object-cover"
-            />
+            <div className="mx-auto mt-[22px] h-[210px] w-[210px] overflow-hidden rounded-[22px]">
+              <img
+                src={album?.cover}
+                alt=""
+                className="block h-full w-full scale-[1.04] object-cover object-center"
+              />
+            </div>
 
             <div className="flex min-h-[118px] flex-1 flex-col justify-center overflow-hidden py-[18px] text-center">
               <AnimatePresence mode="popLayout" initial={false}>
@@ -106,6 +117,7 @@ export function LyricsModal() {
                 aria-label="재생 위치"
                 className="relative block h-[8px] w-full overflow-hidden rounded-full bg-white"
                 onPointerDown={(event) => {
+                  event.stopPropagation();
                   event.currentTarget.setPointerCapture(event.pointerId);
                   seekFromEvent(event.clientX);
                 }}

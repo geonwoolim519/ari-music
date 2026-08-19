@@ -2,6 +2,20 @@ import { AnimatePresence, motion } from "framer-motion";
 import { historySlides } from "../data/history";
 import { useUiStore } from "../store/uiStore";
 
+function ChevronLeftIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+      <path
+        d="M10.5 3.2 5.2 8 10.5 12.8"
+        stroke="white"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 function ChevronRightIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
@@ -35,7 +49,8 @@ export function HistoryModal() {
   const setPage = useUiStore((state) => state.setHistoryPage);
   const close = useUiStore((state) => state.closeHistory);
   const slide = historySlides[page];
-  const isLast = page === historySlides.length - 1;
+  const total = historySlides.length;
+  const isLast = page === total - 1;
 
   return (
     <AnimatePresence>
@@ -55,7 +70,7 @@ export function HistoryModal() {
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.12}
             onDragEnd={(_, info) => {
-              if (info.offset.x < -60 && page < historySlides.length - 1) {
+              if (info.offset.x < -60 && page < total - 1) {
                 setPage(page + 1);
               } else if (info.offset.x > 60 && page > 0) {
                 setPage(page - 1);
@@ -63,7 +78,17 @@ export function HistoryModal() {
             }}
           >
             <div className="phone-scroll h-full overflow-y-auto px-[22px] pb-[36px] pt-[18px]">
-              <div className="relative mb-[18px] flex items-center justify-center">
+              <div className="relative mb-[14px] flex h-[34px] items-center justify-center">
+                {page > 0 ? (
+                  <button
+                    type="button"
+                    onClick={() => setPage(page - 1)}
+                    className="absolute left-0 grid h-[34px] w-[34px] place-items-center rounded-full bg-[#c8c8c8]"
+                    aria-label="이전"
+                  >
+                    <ChevronLeftIcon />
+                  </button>
+                ) : null}
                 <h2 className="text-[20px] font-extrabold tracking-[-0.03em]">
                   아리랑의 역사
                 </h2>
@@ -75,6 +100,18 @@ export function HistoryModal() {
                 >
                   {isLast ? <CloseIcon /> : <ChevronRightIcon />}
                 </button>
+              </div>
+
+              <div className="mb-[18px]">
+                <p className="text-[12px] font-semibold tracking-[-0.02em] text-black">
+                  {page + 1}/{total}
+                </p>
+                <div className="mt-[8px] h-[4px] w-full overflow-hidden bg-black">
+                  <div
+                    className="h-full bg-[#FF4D4D] transition-[width] duration-200"
+                    style={{ width: `${((page + 1) / total) * 100}%` }}
+                  />
+                </div>
               </div>
 
               <AnimatePresence mode="wait">

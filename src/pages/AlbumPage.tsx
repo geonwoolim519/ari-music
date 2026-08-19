@@ -25,20 +25,20 @@ export function AlbumPage() {
 
   return (
     <div className="flex h-full flex-col" style={{ background: album.theme }}>
-      <div className="relative h-[38%] min-h-[250px] shrink-0">
+      <div className="relative h-[38%] min-h-[250px] shrink-0 overflow-hidden">
         <img
           src={album.hero}
           alt=""
-          className="absolute inset-0 h-full w-full object-cover object-center"
+          className="absolute inset-0 h-full w-full scale-[1.04] object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/10" />
-        <div className="absolute inset-x-0 bottom-[18%] flex flex-col items-center">
-          <h1 className="text-[32px] font-extrabold tracking-[-0.04em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
+        <div className="absolute inset-x-0 bottom-[18%] grid justify-items-center">
+          <h1 className="w-fit max-w-full px-[16px] text-center text-[32px] font-extrabold tracking-[-0.04em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
             {album.name}
           </h1>
           <button
             type="button"
-            className="mt-[10px] rounded-full bg-white px-[16px] py-[7px] text-[13px] font-bold text-black shadow-[0_4px_10px_rgba(0,0,0,0.12)]"
+            className="mt-[10px] rounded-full bg-white px-[16px] py-[7px] text-center text-[13px] font-bold text-black shadow-[0_4px_10px_rgba(0,0,0,0.12)]"
             onClick={() => setDescOpen(true)}
           >
             앨범 설명 보기
@@ -46,19 +46,19 @@ export function AlbumPage() {
         </div>
       </div>
 
-      <div className="flex min-h-0 flex-1 flex-col px-[22px] pt-[22px] pb-[160px]">
+      <div className="flex min-h-0 flex-1 flex-col items-center px-[22px] pt-[22px] pb-[160px]">
         <button
           type="button"
-          className="mx-auto flex h-[48px] w-[148px] items-center justify-center gap-[8px] rounded-full bg-white text-[17px] font-extrabold text-black"
+          className="flex h-[48px] w-[148px] shrink-0 items-center justify-center gap-[8px] rounded-full bg-white text-[17px] font-extrabold text-black"
           onClick={() => playTrack(album.tracks[0])}
         >
-          <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor">
+          <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor" className="shrink-0" aria-hidden>
             <path d="M1.2 1.1v13.8L13 8 1.2 1.1Z" />
           </svg>
           재생
         </button>
 
-        <ul className="mt-[16px]">
+        <ul className="mt-[16px] w-full">
           {album.tracks.map((track, index) => (
             <li key={track.id} className="border-b border-white/55">
               <div className="flex items-center justify-between py-[14px]">
