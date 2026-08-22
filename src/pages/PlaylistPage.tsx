@@ -2,6 +2,8 @@ import { Link, useParams } from "react-router-dom";
 import { usePlayerStore } from "../store/playerStore";
 import { PLAYLISTS, usePlaylistStore, type PlaylistId } from "../store/playlistStore";
 import { DashedRule, ProfileBadge, VinylIcon } from "../components/LibraryChrome";
+import { trackTitle } from "../data/albums";
+import { useLocaleStore, useT } from "../store/localeStore";
 
 export function PlaylistPage() {
   const { playlistId } = useParams();
@@ -9,13 +11,15 @@ export function PlaylistPage() {
   const playlist = PLAYLISTS.find((item) => item.id === id);
   const items = usePlaylistStore((state) => state.lists[id] ?? []);
   const playTrack = usePlayerStore((state) => state.playTrack);
+  const t = useT();
+  const locale = useLocaleStore((state) => state.locale);
 
   if (!playlist) {
     return (
       <div className="flex h-full flex-col bg-white px-[22px] pt-[20px]">
-        <p>플레이리스트를 찾을 수 없습니다.</p>
+        <p>{t("playlistMissing")}</p>
         <Link to="/library" className="mt-[12px] text-[#FF4D4D]">
-          보관함으로
+          {t("toLibrary")}
         </Link>
       </div>
     );
@@ -25,7 +29,7 @@ export function PlaylistPage() {
     <div className="flex h-full flex-col bg-white">
       <header className="flex items-center justify-between px-[22px] pt-[16px] pb-[4px]">
         <h1 className="text-[32px] font-extrabold tracking-[-0.06em] text-black">
-          {playlist.name}
+          {t("playlistN", { n: playlist.id })}
         </h1>
         <ProfileBadge />
       </header>
@@ -42,7 +46,9 @@ export function PlaylistPage() {
                     onClick={() => playTrack(track, items)}
                   >
                     <VinylIcon />
-                    <span className="text-[16px] font-medium text-black">{track.title}</span>
+                    <span className="text-[16px] font-medium text-black">
+                      {trackTitle(track, locale)}
+                    </span>
                   </button>
                   <DashedRule />
                 </li>
@@ -56,7 +62,7 @@ export function PlaylistPage() {
               <svg width="12" height="14" viewBox="0 0 14 16" fill="currentColor">
                 <path d="M1.2 1.1v13.8L13 8 1.2 1.1Z" />
               </svg>
-              재생
+              {t("play")}
             </button>
           </>
         )}

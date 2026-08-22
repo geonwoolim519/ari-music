@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { historySlides } from "../data/history";
 import { useUiStore } from "../store/uiStore";
+import { useT } from "../store/localeStore";
 
 function ChevronLeftIcon() {
   return (
@@ -48,6 +49,7 @@ export function HistoryModal() {
   const page = useUiStore((state) => state.historyPage);
   const setPage = useUiStore((state) => state.setHistoryPage);
   const close = useUiStore((state) => state.closeHistory);
+  const t = useT();
   const slide = historySlides[page];
   const total = historySlides.length;
   const isLast = page === total - 1;
@@ -90,7 +92,7 @@ export function HistoryModal() {
                   </button>
                 ) : null}
                 <h2 className="text-[20px] font-extrabold tracking-[-0.03em]">
-                  아리랑의 역사
+                  {t("history")}
                 </h2>
                 <button
                   type="button"

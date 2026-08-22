@@ -1,10 +1,12 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { CommunityIcon, FolderIcon, HomeIcon } from "./Icons";
 import { useAlbumChrome } from "../hooks/useAlbumChrome";
+import { useT } from "../store/localeStore";
 
 export function BottomNav() {
   const pageAlbum = useAlbumChrome();
   const { pathname } = useLocation();
+  const t = useT();
   const themed = Boolean(pageAlbum);
   const onLibrary = pathname.startsWith("/library");
   const onHome = pathname === "/";
@@ -24,7 +26,7 @@ export function BottomNav() {
     >
       <NavLink
         to="/"
-        aria-label="홈"
+        aria-label={t("home")}
         aria-current={onHome ? "page" : undefined}
         className={tabClass(onHome)}
       >
@@ -32,7 +34,7 @@ export function BottomNav() {
       </NavLink>
       <NavLink
         to="/community"
-        aria-label="커뮤니티"
+        aria-label={t("community")}
         aria-current={onCommunity ? "page" : undefined}
         className={tabClass(onCommunity)}
       >
@@ -40,7 +42,7 @@ export function BottomNav() {
       </NavLink>
       <NavLink
         to="/library"
-        aria-label="보관함"
+        aria-label={t("library")}
         aria-current={onLibrary ? "page" : undefined}
         className={tabClass(onLibrary)}
       >

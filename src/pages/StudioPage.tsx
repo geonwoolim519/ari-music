@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useT } from "../store/localeStore";
 
 type StudioTab = "jangdan" | "gugak" | "melody" | "fx";
 
@@ -10,11 +11,11 @@ type StudioSound = {
   hue: string;
 };
 
-const TABS: { id: StudioTab; label: string }[] = [
-  { id: "jangdan", label: "장단" },
-  { id: "gugak", label: "국악기" },
-  { id: "melody", label: "가락" },
-  { id: "fx", label: "여음" },
+const TABS: { id: StudioTab; labelKey: "tabJangdan" | "tabGugak" | "tabMelody" | "tabFx" }[] = [
+  { id: "jangdan", labelKey: "tabJangdan" },
+  { id: "gugak", labelKey: "tabGugak" },
+  { id: "melody", labelKey: "tabMelody" },
+  { id: "fx", labelKey: "tabFx" },
 ];
 
 const SOUNDS: StudioSound[] = [
@@ -91,6 +92,7 @@ function Performer({
 
 export function StudioPage() {
   const navigate = useNavigate();
+  const t = useT();
   const [tab, setTab] = useState<StudioTab>("gugak");
   const [slots, setSlots] = useState<(string | null)[]>(
     Array.from({ length: SLOT_COUNT }, () => null),
@@ -119,7 +121,7 @@ export function StudioPage() {
         <button
           type="button"
           className="absolute left-[10px] grid h-[36px] w-[36px] place-items-center text-white/70"
-          aria-label="뒤로"
+          aria-label={t("back")}
           onClick={() => navigate("/")}
         >
           <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden>
@@ -132,18 +134,18 @@ export function StudioPage() {
             />
           </svg>
         </button>
-        <h1 className="text-[17px] font-extrabold tracking-[-0.03em]">아리랑 스튜디오</h1>
+        <h1 className="text-[17px] font-extrabold tracking-[-0.03em]">{t("studioTitle")}</h1>
       </header>
 
       <div className="phone-scroll flex min-h-0 flex-1 flex-col overflow-y-auto px-[16px] pb-[150px]">
         <div className="flex items-center justify-between text-[12px] text-white/65">
-          <span>{filled} / {SLOT_COUNT} 소리 올림</span>
+          <span>{t("studioCount", { n: filled, max: SLOT_COUNT })}</span>
           <button
             type="button"
             className="text-[12px] font-semibold text-white/80"
             onClick={() => setSlots(Array.from({ length: SLOT_COUNT }, () => null))}
           >
-            비우기
+            {t("clearStudio")}
           </button>
         </div>
 
@@ -160,9 +162,9 @@ export function StudioPage() {
             ))}
           </div>
           <p className="mt-[10px] text-center text-[12px] leading-[1.55] text-white/55">
-            아래 소리를 눌러 자리에 올려 보세요.
+            {t("studioHint1")}
             <br />
-            인크레디박스처럼, 겹쳐질수록 나만의 아리랑이 됩니다.
+            {t("studioHint2")}
           </p>
         </div>
 
@@ -178,7 +180,7 @@ export function StudioPage() {
                   : "border-b-2 border-transparent text-white/45"
               }`}
             >
-              {item.label}
+                {t(item.labelKey)}
             </button>
           ))}
         </div>

@@ -1,8 +1,9 @@
 import { useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { getAlbum } from "../data/albums";
+import { albumName, getAlbum, LYRICS_PLACEHOLDER, trackTitle } from "../data/albums";
 import { usePlayerStore } from "../store/playerStore";
 import { useUiStore } from "../store/uiStore";
+import { useLocaleStore, useT } from "../store/localeStore";
 
 function formatTime(seconds: number) {
   if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
@@ -33,6 +34,8 @@ export function LyricsModal() {
   const prevTrack = usePlayerStore((state) => state.prevTrack);
   const seek = usePlayerStore((state) => state.seek);
   const album = track ? getAlbum(track.albumId) : undefined;
+  const locale = useLocaleStore((state) => state.locale);
+  const t = useT();
   const barRef = useRef<HTMLButtonElement>(null);
   const progress = duration > 0 ? Math.min(currentTime / duration, 1) : 0;
   const lyricIndex = track ? activeLyricIndex(track.lyrics, currentTime) : 0;
@@ -73,8 +76,12 @@ export function LyricsModal() {
             >
               <span className="h-[5px] w-[48px] rounded-full bg-white/90" />
             </button>
-            <p className="mt-[6px] text-[20px] font-extrabold leading-[1.25]">{album?.name} 앨범</p>
-            <p className="mt-[4px] text-[15px] font-medium text-white/95">{track.title}</p>
+            <p className="mt-[6px] text-[20px] font-extrabold leading-[1.25]">
+              {album ? `${albumName(album, locale)} ${t("albumWord")}` : ""}
+            </p>
+            <p className="mt-[4px] text-[15px] font-medium text-white/95">
+              {trackTitle(track, locale)}
+            </p>
 
             <div className="mx-auto mt-[22px] h-[210px] w-[210px] overflow-hidden rounded-[22px]">
               <img
@@ -104,7 +111,7 @@ export function LyricsModal() {
                     }}
                     className="mb-[8px] text-[18px] font-bold leading-[1.45]"
                   >
-                    {line.text}
+                    {line.text === LYRICS_PLACEHOLDER ? t("lyricsSoon") : line.text}
                   </motion.p>
                 ))}
               </AnimatePresence>

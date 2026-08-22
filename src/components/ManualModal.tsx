@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useUiStore } from "../store/uiStore";
+import { useT } from "../store/localeStore";
 
 function HeadphonesIcon() {
   return (
@@ -54,28 +55,12 @@ function BulbIcon() {
   );
 }
 
-const guides = [
-  {
-    icon: HeadphonesIcon,
-    text: "한국의 다양한 아리랑을 지역별로 모아 둔 아리랑 앨범을 들어 보세요.",
-  },
-  {
-    icon: NoteIcon,
-    text: "아리랑 스튜디오에서 국악기 소리와 장단을 겹쳐, 나만의 아리랑을 만들어 보세요.",
-  },
-  {
-    icon: BookIcon,
-    text: "아리랑의 역사와 문화지도를 보며 유래와 전승, 지역의 헤리티지를 더 깊이 알아 보세요.",
-  },
-  {
-    icon: BulbIcon,
-    text: "여러 아리랑을 비교해 들으며 서로 다른 가락과 장단을 느끼고, 국악의 세계에 빠져 보세요.",
-  },
-];
+const guideKeys = ["manual1", "manual2", "manual3", "manual4"] as const;
 
 export function ManualModal() {
   const open = useUiStore((state) => state.manualOpen);
   const close = useUiStore((state) => state.closeManual);
+  const t = useT();
 
   return (
     <AnimatePresence>
@@ -89,7 +74,7 @@ export function ManualModal() {
           <button
             type="button"
             className="absolute inset-0"
-            aria-label="닫기"
+            aria-label={t("close")}
             onClick={close}
           />
           <motion.div
@@ -101,31 +86,28 @@ export function ManualModal() {
           >
             <div className="phone-scroll h-full overflow-y-auto px-[22px] pb-[36px] pt-[18px]">
               <div className="relative mb-[22px] flex items-center justify-center">
-                <h2 className="text-[20px] font-extrabold">사용설명서</h2>
+                <h2 className="text-[20px] font-extrabold">{t("manual")}</h2>
                 <button
                   type="button"
                   onClick={close}
                   className="absolute right-0 grid h-[32px] w-[32px] place-items-center rounded-full bg-[#FF4D4D] text-[18px] font-bold text-white"
-                  aria-label="닫기"
+                  aria-label={t("close")}
                 >
                   ×
                 </button>
               </div>
 
               <ul className="flex flex-col gap-[22px]">
-                {guides.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <li key={item.text} className="flex items-start gap-[14px]">
-                      <span className="grid h-[48px] w-[48px] shrink-0 place-items-center rounded-full bg-[#EFEFEF]">
-                        <Icon />
-                      </span>
-                      <p className="pt-[6px] text-[14px] leading-[1.7] tracking-[-0.02em] text-[#222]">
-                        {item.text}
-                      </p>
-                    </li>
-                  );
-                })}
+                {[HeadphonesIcon, NoteIcon, BookIcon, BulbIcon].map((Icon, index) => (
+                  <li key={guideKeys[index]} className="flex items-start gap-[14px]">
+                    <span className="grid h-[48px] w-[48px] shrink-0 place-items-center rounded-full bg-[#EFEFEF]">
+                      <Icon />
+                    </span>
+                    <p className="pt-[6px] text-[14px] leading-[1.7] tracking-[-0.02em] text-[#222]">
+                      {t(guideKeys[index])}
+                    </p>
+                  </li>
+                ))}
               </ul>
             </div>
           </motion.div>

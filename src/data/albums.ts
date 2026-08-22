@@ -12,6 +12,7 @@ export type AlbumId =
 export type Track = {
   id: string;
   title: string;
+  titleEn: string;
   albumId: AlbumId;
   audioUrl?: string;
   lyrics: { time: number; text: string }[];
@@ -20,6 +21,7 @@ export type Track = {
 export type Album = {
   id: AlbumId;
   name: string;
+  nameEn: string;
   cover: string;
   hero: string;
   theme: string;
@@ -28,12 +30,15 @@ export type Album = {
   tracks: Track[];
 };
 
-const placeholderLyrics = [{ time: 0, text: "가사가 곧 연결됩니다." }];
+export const LYRICS_PLACEHOLDER = "가사가 곧 연결됩니다.";
+
+const placeholderLyrics = [{ time: 0, text: LYRICS_PLACEHOLDER }];
 
 export const albums: Album[] = [
   {
     id: "gyeonggi",
     name: "경기아리랑",
+    nameEn: "Gyeonggi Arirang",
     cover: asset("covers/gyeonggi.jpg?v=2"),
     hero: asset("covers/gyeonggi-hero.jpg?v=1"),
     theme: "#A48D23",
@@ -47,6 +52,7 @@ export const albums: Album[] = [
       {
         id: "bonjo-arirang",
         title: "본조아리랑",
+        titleEn: "Bonjo Arirang",
         albumId: "gyeonggi",
         audioUrl: asset("audio/gyeonggi/bonjo-arirang.mp3"),
         lyrics: placeholderLyrics,
@@ -54,6 +60,7 @@ export const albums: Album[] = [
       {
         id: "gu-arirang",
         title: "구아리랑",
+        titleEn: "Gu Arirang",
         albumId: "gyeonggi",
         audioUrl: asset("audio/gyeonggi/gu-arirang.mp3"),
         lyrics: placeholderLyrics,
@@ -61,6 +68,7 @@ export const albums: Album[] = [
       {
         id: "gu-arirang-piano",
         title: "구아리랑 (Piano ver.)",
+        titleEn: "Gu Arirang (Piano ver.)",
         albumId: "gyeonggi",
         audioUrl: asset("audio/gyeonggi/gu-arirang-piano.mp3"),
         lyrics: placeholderLyrics,
@@ -70,6 +78,7 @@ export const albums: Album[] = [
   {
     id: "jindo",
     name: "진도아리랑",
+    nameEn: "Jindo Arirang",
     cover: asset("covers/jindo.jpg?v=2"),
     hero: asset("covers/jindo-hero.jpg?v=1"),
     theme: "#6A87B2",
@@ -83,6 +92,7 @@ export const albums: Album[] = [
       {
         id: "jindo-arirang",
         title: "진도아리랑",
+        titleEn: "Jindo Arirang",
         albumId: "jindo",
         audioUrl: asset("audio/jindo/jindo-arirang.mp3"),
         lyrics: placeholderLyrics,
@@ -90,6 +100,7 @@ export const albums: Album[] = [
       {
         id: "jindo-arirang-jangdan",
         title: "진도아리랑 (장단 ver.)",
+        titleEn: "Jindo Arirang (Jangdan ver.)",
         albumId: "jindo",
         audioUrl: asset("audio/jindo/jindo-arirang-jangdan.mp3"),
         lyrics: placeholderLyrics,
@@ -97,6 +108,7 @@ export const albums: Album[] = [
       {
         id: "jindo-arirang-piano",
         title: "진도아리랑 (Piano ver.)",
+        titleEn: "Jindo Arirang (Piano ver.)",
         albumId: "jindo",
         audioUrl: asset("audio/jindo/jindo-arirang-piano.mp3"),
         lyrics: placeholderLyrics,
@@ -106,6 +118,7 @@ export const albums: Album[] = [
   {
     id: "miryang",
     name: "밀양아리랑",
+    nameEn: "Miryang Arirang",
     cover: asset("covers/miryang.jpg?v=2"),
     hero: asset("covers/miryang-hero.jpg?v=1"),
     theme: "#4C5530",
@@ -120,6 +133,7 @@ export const albums: Album[] = [
       {
         id: "miryang-arirang",
         title: "밀양아리랑 (송소희 가창 ver.)",
+        titleEn: "Miryang Arirang (Song So-hee ver.)",
         albumId: "miryang",
         audioUrl: asset("audio/miryang/miryang-arirang-songsohee.mp3"),
         lyrics: placeholderLyrics,
@@ -127,6 +141,7 @@ export const albums: Album[] = [
       {
         id: "miryang-arirang-sorikkun",
         title: "밀양아리랑 (소리꾼 ver.)",
+        titleEn: "Miryang Arirang (Sorikkun ver.)",
         albumId: "miryang",
         audioUrl: asset("audio/miryang/miryang-arirang-sorikkun.mp3"),
         lyrics: placeholderLyrics,
@@ -134,6 +149,7 @@ export const albums: Album[] = [
       {
         id: "miryang-arirang-ungsan",
         title: "밀양아리랑 (웅산 가창 ver.)",
+        titleEn: "Miryang Arirang (Ungsan ver.)",
         albumId: "miryang",
         audioUrl: asset("audio/miryang/miryang-arirang-ungsan.mp3"),
         lyrics: miryangUngsanLyrics,
@@ -143,8 +159,9 @@ export const albums: Album[] = [
   {
     id: "jeongseon",
     name: "정선아리랑",
-    cover: asset("covers/jeongseon.jpg?v=2"),
-    hero: asset("covers/jeongseon-hero.jpg?v=1"),
+    nameEn: "Jeongseon Arirang",
+    cover: asset("covers/jeongseon.jpg?v=3"),
+    hero: asset("covers/jeongseon-hero.jpg?v=3"),
     theme: "#ABA95A",
     bar: "#4A4A22",
     description: [
@@ -156,6 +173,7 @@ export const albums: Album[] = [
       {
         id: "jeongseon-gin",
         title: "정선아리랑 (긴아리랑)",
+        titleEn: "Jeongseon Arirang (Long Arirang)",
         albumId: "jeongseon",
         audioUrl: asset("audio/jeongseon/jeongseon-gin.mp3"),
         lyrics: placeholderLyrics,
@@ -163,6 +181,7 @@ export const albums: Album[] = [
       {
         id: "jeongseon-yeokkeum",
         title: "정선아리랑 (엮음아리랑)",
+        titleEn: "Jeongseon Arirang (Yeokkeum Arirang)",
         albumId: "jeongseon",
         audioUrl: asset("audio/jeongseon/jeongseon-yeokkeum.mp3"),
         lyrics: placeholderLyrics,
@@ -170,6 +189,7 @@ export const albums: Album[] = [
       {
         id: "jeongseon-ttaetmok",
         title: "정선아리랑 (뗏목아리랑)",
+        titleEn: "Jeongseon Arirang (Raft Arirang)",
         albumId: "jeongseon",
         audioUrl: asset("audio/jeongseon/jeongseon-ttaetmok.mp3"),
         lyrics: placeholderLyrics,
@@ -179,8 +199,9 @@ export const albums: Album[] = [
   {
     id: "gangwon",
     name: "강원도아리랑",
-    cover: asset("covers/gangwon.jpg?v=2"),
-    hero: asset("covers/gangwon-hero.jpg?v=2"),
+    nameEn: "Gangwondo Arirang",
+    cover: asset("covers/gangwon.jpg?v=3"),
+    hero: asset("covers/gangwon-hero.jpg?v=3"),
     theme: "#6B4A2E",
     bar: "#3D2A1C",
     description: [
@@ -193,6 +214,7 @@ export const albums: Album[] = [
       {
         id: "gangwon-arirang",
         title: "강원도아리랑",
+        titleEn: "Gangwondo Arirang",
         albumId: "gangwon",
         audioUrl: asset("audio/gangwon/gangwon-arirang.mp3"),
         lyrics: placeholderLyrics,
@@ -200,6 +222,7 @@ export const albums: Album[] = [
       {
         id: "gangwon-arirang-jangdan",
         title: "강원도아리랑 (장단 ver.)",
+        titleEn: "Gangwondo Arirang (Jangdan ver.)",
         albumId: "gangwon",
         audioUrl: asset("audio/gangwon/gangwon-arirang-jangdan.mp3"),
         lyrics: placeholderLyrics,
@@ -207,6 +230,7 @@ export const albums: Album[] = [
       {
         id: "gangwon-arirang-piano",
         title: "강원도아리랑 (피아노 ver.)",
+        titleEn: "Gangwondo Arirang (Piano ver.)",
         albumId: "gangwon",
         audioUrl: asset("audio/gangwon/gangwon-arirang-piano.mp3"),
         lyrics: placeholderLyrics,
@@ -216,6 +240,7 @@ export const albums: Album[] = [
   {
     id: "hyundai",
     name: "현대아리랑",
+    nameEn: "Modern Arirang",
     cover: asset("covers/hyundai.jpg?v=4"),
     hero: asset("covers/hyundai-hero.jpg?v=4"),
     theme: "#715CB7",
@@ -230,6 +255,7 @@ export const albums: Album[] = [
       {
         id: "cheer-national",
         title: "아리랑 응원가 (국민 ver.)",
+        titleEn: "Arirang Cheer Song (National ver.)",
         albumId: "hyundai",
         audioUrl: asset("audio/hyundai/cheer-national.mp3"),
         lyrics: placeholderLyrics,
@@ -237,6 +263,7 @@ export const albums: Album[] = [
       {
         id: "cheer-yoon",
         title: "아리랑 응원가 (윤도현 가창 ver.)",
+        titleEn: "Arirang Cheer Song (Yoon Do-hyun ver.)",
         albumId: "hyundai",
         audioUrl: asset("audio/hyundai/cheer-yoon.mp3"),
         lyrics: cheerYoonLyrics,
@@ -244,6 +271,7 @@ export const albums: Album[] = [
       {
         id: "cheer-gayageum",
         title: "아리랑 응원가 (가야금 ver.)",
+        titleEn: "Arirang Cheer Song (Gayageum ver.)",
         albumId: "hyundai",
         audioUrl: asset("audio/hyundai/cheer-gayageum.mp3"),
         lyrics: placeholderLyrics,
@@ -251,6 +279,14 @@ export const albums: Album[] = [
     ],
   },
 ];
+
+export function albumName(album: Album, locale: "ko" | "en") {
+  return locale === "en" ? album.nameEn : album.name;
+}
+
+export function trackTitle(track: Track, locale: "ko" | "en") {
+  return locale === "en" ? track.titleEn : track.title;
+}
 
 export function getAlbum(id: AlbumId) {
   return albums.find((album) => album.id === id);

@@ -1,12 +1,14 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { getCultureCity } from "../data/cultureMap";
+import { cityName, getCultureCity } from "../data/cultureMap";
+import { useLocaleStore, useT } from "../store/localeStore";
 
 function MapBackButton({ onClick }: { onClick: () => void }) {
+  const t = useT();
   return (
     <button
       type="button"
       className="absolute left-[10px] grid h-[36px] w-[36px] place-items-center text-[#8a8a8a]"
-      aria-label="뒤로"
+      aria-label={t("back")}
       onClick={onClick}
     >
       <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden>
@@ -26,6 +28,7 @@ export function CultureCityPage() {
   const { cityId } = useParams();
   const navigate = useNavigate();
   const city = getCultureCity(cityId ?? "");
+  const locale = useLocaleStore((state) => state.locale);
 
   if (!city) {
     return (
@@ -72,7 +75,9 @@ export function CultureCityPage() {
       <header className="relative flex min-h-[52px] items-center justify-center px-[48px] py-[10px]">
         <MapBackButton onClick={() => navigate("/map")} />
         <h1 className="text-center text-[17px] font-extrabold leading-[1.25] tracking-[-0.03em] text-black">
-          {city.name}아리랑 문화지도
+          {locale === "en"
+            ? `${city.nameEn} Culture Map`
+            : `${city.name}아리랑 문화지도`}
         </h1>
       </header>
 

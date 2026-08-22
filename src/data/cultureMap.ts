@@ -23,9 +23,12 @@ export type CultureIntro = {
 export type CultureCity = {
   id: string;
   name: string;
+  nameEn: string;
   color: string;
   x: string;
   y: string;
+  labelX: string;
+  labelY: string;
   featured: boolean;
   labelSide?: "left" | "right";
   albumCover: string;
@@ -37,10 +40,14 @@ export const cultureCities: CultureCity[] = [
   {
     id: "jeongseon",
     name: "정선",
+    nameEn: "Jeongseon",
     color: "#2FA24F",
-    x: "65.0%",
-    y: "58.9%",
+    x: "67.1%",
+    y: "55.1%",
+    labelX: "75.1%",
+    labelY: "54.1%",
     featured: true,
+    labelSide: "right",
     albumCover: asset("covers/jeongseon.jpg?v=2"),
     places: [
       {
@@ -98,10 +105,14 @@ export const cultureCities: CultureCity[] = [
   {
     id: "miryang",
     name: "밀양",
+    nameEn: "Miryang",
     color: "#3B6FDB",
-    x: "66.2%",
-    y: "82.9%",
+    x: "67.1%",
+    y: "71.1%",
+    labelX: "74.1%",
+    labelY: "71.1%",
     featured: true,
+    labelSide: "right",
     albumCover: asset("covers/miryang.jpg?v=2"),
     places: [
       {
@@ -149,9 +160,12 @@ export const cultureCities: CultureCity[] = [
   {
     id: "jindo",
     name: "진도",
+    nameEn: "Jindo",
     color: "#7B4BC4",
-    x: "38.6%",
-    y: "92.0%",
+    x: "32.1%",
+    y: "81.6%",
+    labelX: "25.1%",
+    labelY: "82.1%",
     featured: true,
     labelSide: "left",
     albumCover: asset("covers/jindo.jpg?v=2"),
@@ -201,10 +215,14 @@ export const cultureCities: CultureCity[] = [
   {
     id: "tongcheon",
     name: "통천",
+    nameEn: "Tongcheon",
     color: "#E53935",
-    x: "56.1%",
-    y: "44.1%",
+    x: "53.1%",
+    y: "40.1%",
+    labelX: "59.1%",
+    labelY: "40.1%",
     featured: false,
+    labelSide: "right",
     albumCover: "",
     places: [],
     intro: {
@@ -220,10 +238,14 @@ export const cultureCities: CultureCity[] = [
   {
     id: "haeju",
     name: "해주",
+    nameEn: "Haeju",
     color: "#E53935",
-    x: "35.6%",
-    y: "55.1%",
+    x: "25.1%",
+    y: "49.1%",
+    labelX: "20.1%",
+    labelY: "48.1%",
     featured: false,
+    labelSide: "left",
     albumCover: "",
     places: [],
     intro: {
@@ -238,11 +260,14 @@ export const cultureCities: CultureCity[] = [
   {
     id: "mungyeong",
     name: "문경",
+    nameEn: "Mungyeong",
     color: "#E53935",
-    x: "63.7%",
-    y: "66.7%",
+    x: "57.1%",
+    y: "61.1%",
+    labelX: "63.3%",
+    labelY: "61.3%",
     featured: false,
-    labelSide: "left",
+    labelSide: "right",
     albumCover: "",
     places: [],
     intro: {
@@ -257,9 +282,12 @@ export const cultureCities: CultureCity[] = [
   {
     id: "gongju",
     name: "공주",
+    nameEn: "Gongju",
     color: "#E53935",
-    x: "46.3%",
-    y: "73.1%",
+    x: "44.1%",
+    y: "65.1%",
+    labelX: "39.1%",
+    labelY: "66.1%",
     featured: false,
     labelSide: "left",
     albumCover: "",
@@ -279,6 +307,10 @@ export const cultureCities: CultureCity[] = [
 
 export function getCultureCity(id: string) {
   return cultureCities.find((city) => city.id === id);
+}
+
+export function cityName(city: CultureCity, locale: "ko" | "en") {
+  return locale === "en" ? city.nameEn : city.name;
 }
 
 export const cultureCityIds = ["jeongseon", "miryang", "jindo"] as const;

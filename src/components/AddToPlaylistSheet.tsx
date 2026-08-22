@@ -1,11 +1,15 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { DashedRule, ListFolderIcon } from "./LibraryChrome";
 import { PLAYLISTS, usePlaylistStore } from "../store/playlistStore";
+import { trackTitle } from "../data/albums";
+import { useLocaleStore, useT } from "../store/localeStore";
 
 export function AddToPlaylistSheet() {
   const pendingTrack = usePlaylistStore((state) => state.pendingTrack);
   const closeAddSheet = usePlaylistStore((state) => state.closeAddSheet);
   const addToPlaylist = usePlaylistStore((state) => state.addToPlaylist);
+  const t = useT();
+  const locale = useLocaleStore((state) => state.locale);
 
   return (
     <AnimatePresence>
@@ -19,7 +23,7 @@ export function AddToPlaylistSheet() {
           <button
             type="button"
             className="absolute inset-0"
-            aria-label="닫기"
+            aria-label={t("close")}
             onClick={closeAddSheet}
           />
           <motion.div
@@ -30,8 +34,10 @@ export function AddToPlaylistSheet() {
             onClick={(event) => event.stopPropagation()}
           >
             <div className="mx-auto mb-[14px] h-[5px] w-[48px] rounded-full bg-[#d8d8d8]" />
-            <h2 className="mb-[6px] text-[20px] font-extrabold">플레이리스트에 추가</h2>
-            <p className="mb-[14px] truncate text-[13px] text-[#777]">{pendingTrack.title}</p>
+            <h2 className="mb-[6px] text-[20px] font-extrabold">{t("addToPlaylist")}</h2>
+            <p className="mb-[14px] truncate text-[13px] text-[#777]">
+              {trackTitle(pendingTrack, locale)}
+            </p>
             <ul>
               {PLAYLISTS.map((playlist) => (
                 <li key={playlist.id}>
@@ -42,10 +48,10 @@ export function AddToPlaylistSheet() {
                   >
                     <ListFolderIcon />
                     <span className="text-[17px] font-semibold">
-                      {playlist.name}
+                      {t("playlistN", { n: playlist.id })}
                       {playlist.id === 1 ? (
                         <span className="ml-[8px] text-[12px] font-medium text-[#888]">
-                          기본
+                          {t("playlistDefault")}
                         </span>
                       ) : null}
                     </span>

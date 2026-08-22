@@ -2,15 +2,23 @@ import { useNavigate } from "react-router-dom";
 import { CommunityIcon } from "../components/Icons";
 import { DashedRule, ProfileBadge } from "../components/LibraryChrome";
 import { boards } from "../data/boards";
+import { useT } from "../store/localeStore";
+
+const boardKeys = {
+  studio: "boardStudio",
+  album: "boardAlbum",
+  free: "boardCulture",
+} as const;
 
 export function CommunityPage() {
   const navigate = useNavigate();
+  const t = useT();
 
   return (
     <div className="flex h-full flex-col bg-white">
       <header className="flex items-center justify-between px-[22px] pt-[16px] pb-[4px]">
         <h1 className="text-[34px] font-extrabold tracking-[-0.06em] text-black">
-          게시판
+          {t("board")}
         </h1>
         <ProfileBadge />
       </header>
@@ -26,7 +34,7 @@ export function CommunityPage() {
               >
                 <CommunityIcon size={24} />
                 <span className="text-[17px] font-semibold text-black">
-                  {board.name}
+                  {t(boardKeys[board.id])}
                 </span>
               </button>
               <DashedRule />

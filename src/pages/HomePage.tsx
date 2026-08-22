@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { albums } from "../data/albums";
+import { albums, albumName } from "../data/albums";
 import { archiveVideos } from "../data/archive";
 import { asset } from "../lib/asset";
 import { useDragScroll } from "../hooks/useDragScroll";
@@ -16,11 +16,74 @@ import {
   FingerIcon,
   SectionChevron,
 } from "../components/Icons";
+import { useLocaleStore, useT } from "../store/localeStore";
 
 const archivePages = Array.from(
   { length: Math.ceil(archiveVideos.length / 2) },
   (_, index) => archiveVideos.slice(index * 2, index * 2 + 2),
 );
+
+function StudioVinylBackdrop() {
+  const grooves = Array.from({ length: 38 }, (_, index) => 38 + index * 3.55);
+
+  return (
+    <span className="pointer-events-none absolute inset-0 overflow-hidden bg-[#050505]" aria-hidden>
+      <svg
+        viewBox="0 0 360 132"
+        className="absolute inset-0 h-full w-full"
+        preserveAspectRatio="xMaxYMid slice"
+      >
+        <defs>
+          <radialGradient id="studioVinylDisc" cx="46%" cy="40%">
+            <stop offset="0%" stopColor="#2b2b2b" />
+            <stop offset="14%" stopColor="#111" />
+            <stop offset="36%" stopColor="#1c1c1c" />
+            <stop offset="58%" stopColor="#0a0a0a" />
+            <stop offset="100%" stopColor="#000" />
+          </radialGradient>
+          <radialGradient id="studioVinylSheen" cx="70%" cy="22%">
+            <stop offset="0%" stopColor="rgba(255,255,255,0.28)" />
+            <stop offset="28%" stopColor="rgba(255,255,255,0.08)" />
+            <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+          </radialGradient>
+          <linearGradient id="studioVinylArm" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#f2f2f2" />
+            <stop offset="45%" stopColor="#9a9a9a" />
+            <stop offset="100%" stopColor="#dedede" />
+          </linearGradient>
+        </defs>
+        <circle cx="292" cy="6" r="178" fill="url(#studioVinylDisc)" />
+        {grooves.map((radius) => (
+          <circle
+            key={radius}
+            cx="292"
+            cy="6"
+            r={radius}
+            fill="none"
+            stroke={radius % 7 < 3.55 ? "rgba(255,255,255,0.11)" : "rgba(255,255,255,0.045)"}
+            strokeWidth="0.85"
+          />
+        ))}
+        <circle cx="292" cy="6" r="178" fill="url(#studioVinylSheen)" />
+        <circle cx="292" cy="6" r="34" fill="#f3f3f3" />
+        <circle cx="292" cy="6" r="32.4" fill="none" stroke="#d4d4d4" strokeWidth="1" />
+        <circle cx="292" cy="6" r="4" fill="#161616" />
+        <path
+          d="M352 4C322 18 300 38 248 62"
+          stroke="url(#studioVinylArm)"
+          strokeWidth="5.4"
+          strokeLinecap="round"
+          fill="none"
+        />
+        <g transform="rotate(-32 246 64)">
+          <rect x="234" y="56" width="24" height="15" rx="2.2" fill="#d8d8d8" />
+          <rect x="238" y="60" width="10" height="6" rx="1" fill="#8f8f8f" />
+          <rect x="232.4" y="61.4" width="3.2" height="4.2" rx="0.6" fill="#cfcfcf" />
+        </g>
+      </svg>
+    </span>
+  );
+}
 
 function YoutubePlayBadge() {
   return (
@@ -45,6 +108,8 @@ export function HomePage() {
   const albumScrollRef = useDragScroll<HTMLDivElement>();
   const archiveScrollRef = useDragScroll<HTMLDivElement>({ pageSnap: true });
   const [storyOpen, setStoryOpen] = useState(false);
+  const t = useT();
+  const locale = useLocaleStore((state) => state.locale);
 
   return (
     <div className="flex h-full flex-col bg-white">
@@ -56,20 +121,34 @@ export function HomePage() {
             onClick={() => navigate("/studio")}
             className="relative h-[132px] overflow-hidden rounded-[28px] text-left shadow-[0_8px_18px_rgba(0,0,0,0.12)]"
           >
-            <img
-              src={asset("studio-ink.jpg")}
-              alt=""
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <span className="absolute inset-0 bg-gradient-to-r from-white/82 via-white/55 to-transparent" />
+            {locale === "en" ? (
+              <StudioVinylBackdrop />
+            ) : (
+              <>
+                <img
+                  src={asset("studio-ink.jpg")}
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <span className="absolute inset-0 bg-gradient-to-r from-white/82 via-white/55 to-transparent" />
+              </>
+            )}
             <span className="relative z-[1] flex h-full flex-col justify-center px-[22px] pr-[88px]">
-              <span className="text-[22px] font-extrabold tracking-[-0.04em] text-black">
-                아리랑 스튜디오
+              <span
+                className={`text-[22px] font-extrabold tracking-[-0.04em] ${
+                  locale === "en" ? "text-white" : "text-black"
+                }`}
+              >
+                {t("studioTitle")}
               </span>
-              <span className="mt-[8px] text-[13px] font-medium leading-[1.45] tracking-[-0.02em] text-[#222]">
-                국악기 소리와 장단으로
+              <span
+                className={`mt-[8px] text-[13px] font-medium leading-[1.45] tracking-[-0.02em] ${
+                  locale === "en" ? "text-white" : "text-[#222]"
+                }`}
+              >
+                {t("studioLine1")}
                 <br />
-                나만의 아리랑을 만들어보세요
+                {t("studioLine2")}
               </span>
             </span>
           </button>
@@ -88,7 +167,7 @@ export function HomePage() {
                 <MenuIcon size={22} />
               </span>
               <span className="text-[17px] font-extrabold tracking-[-0.03em] text-black">
-                아리랑 이야기
+                {t("arirangStory")}
               </span>
             </button>
 
@@ -109,7 +188,7 @@ export function HomePage() {
                     >
                       <SearchIcon size={18} />
                       <span className="text-[14px] font-semibold tracking-[-0.02em] text-black">
-                        아리뮤직 소개
+                        {t("intro")}
                       </span>
                     </button>
                     <button
@@ -119,7 +198,7 @@ export function HomePage() {
                     >
                       <FingerIcon size={18} />
                       <span className="text-[14px] font-semibold tracking-[-0.02em] text-black">
-                        사용설명서
+                        {t("manual")}
                       </span>
                     </button>
                     <button
@@ -129,7 +208,7 @@ export function HomePage() {
                     >
                       <HistoryClockIcon size={18} />
                       <span className="text-[14px] font-semibold tracking-[-0.02em] text-black">
-                        아리랑의 역사
+                        {t("history")}
                       </span>
                     </button>
                     <button
@@ -139,7 +218,7 @@ export function HomePage() {
                     >
                       <MapPinIcon size={18} />
                       <span className="text-[14px] font-semibold tracking-[-0.02em] text-black">
-                        아리랑 문화지도
+                        {t("cultureMap")}
                       </span>
                     </button>
                   </div>
@@ -152,7 +231,7 @@ export function HomePage() {
         <section className="mt-[28px]">
           <div className="mb-[14px] flex items-center gap-[4px]">
             <h2 className="text-[20px] font-extrabold tracking-[-0.04em] text-black">
-              지역별 아리랑 앨범
+              {t("regionalAlbums")}
             </h2>
             <span className="text-[#8a8a8a]">
               <SectionChevron size={22} />
@@ -167,16 +246,16 @@ export function HomePage() {
               <button
                 key={album.id}
                 type="button"
-                className="w-[108px] shrink-0 snap-start text-center"
+                className="w-[108px] min-w-[108px] max-w-[108px] shrink-0 snap-start overflow-hidden text-center"
                 onClick={() => navigate(`/album/${album.id}`)}
               >
                 <img
                   src={album.cover}
-                  alt={album.name}
+                  alt={albumName(album, locale)}
                   className="aspect-square w-full rounded-[18px] object-cover"
                 />
-                <span className="mt-[8px] block text-[13px] font-semibold tracking-[-0.02em] text-black">
-                  {album.name}
+                <span className="mt-[8px] block h-[34px] w-full text-[13px] font-semibold leading-[1.25] tracking-[-0.02em] break-words text-black">
+                  {albumName(album, locale)}
                 </span>
               </button>
             ))}
@@ -186,7 +265,7 @@ export function HomePage() {
         <section className="mt-[26px]">
           <div className="mb-[14px] flex items-center gap-[4px]">
             <h2 className="text-[20px] font-extrabold tracking-[-0.04em] text-black">
-              공연 아카이브
+              {t("archive")}
             </h2>
             <span className="text-[#8a8a8a]">
               <SectionChevron size={22} />

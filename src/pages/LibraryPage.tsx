@@ -1,15 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { DashedRule, ListFolderIcon, ProfileBadge } from "../components/LibraryChrome";
 import { PLAYLISTS } from "../store/playlistStore";
+import { useT } from "../store/localeStore";
 
 export function LibraryPage() {
   const navigate = useNavigate();
+  const t = useT();
 
   return (
     <div className="flex h-full flex-col bg-white">
       <header className="flex items-center justify-between px-[22px] pt-[16px] pb-[4px]">
         <h1 className="text-[34px] font-extrabold tracking-[-0.06em] text-black">
-          보관함
+          {t("library")}
         </h1>
         <ProfileBadge />
       </header>
@@ -25,7 +27,7 @@ export function LibraryPage() {
               >
                 <ListFolderIcon />
                 <span className="text-[17px] font-semibold text-black">
-                  {playlist.name}
+                  {t("playlistN", { n: playlist.id })}
                 </span>
               </button>
               <DashedRule />

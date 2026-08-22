@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
-import type { Album } from "../data/albums";
+import { albumName, type Album } from "../data/albums";
+import { useLocaleStore, useT } from "../store/localeStore";
 
 type Props = {
   album: Album;
@@ -8,6 +9,8 @@ type Props = {
 };
 
 export function AlbumDescModal({ album, open, onClose }: Props) {
+  const t = useT();
+  const locale = useLocaleStore((state) => state.locale);
   return (
     <AnimatePresence>
       {open && (
@@ -21,7 +24,7 @@ export function AlbumDescModal({ album, open, onClose }: Props) {
           <button
             type="button"
             className="absolute inset-0"
-            aria-label="닫기"
+            aria-label={t("close")}
             onClick={onClose}
           />
           <motion.div
@@ -33,13 +36,13 @@ export function AlbumDescModal({ album, open, onClose }: Props) {
           >
             <div className="phone-scroll h-full overflow-y-auto px-[22px] pb-[36px] pt-[18px]">
               <div className="relative mb-[18px] flex items-center justify-center">
-                <h2 className="text-[20px] font-extrabold">{album.name}</h2>
+                <h2 className="text-[20px] font-extrabold">{albumName(album, locale)}</h2>
                 <button
                   type="button"
                   onClick={onClose}
                   className="absolute right-0 grid h-[32px] w-[32px] place-items-center rounded-full text-[18px] font-bold text-white"
                   style={{ background: album.theme }}
-                  aria-label="닫기"
+                  aria-label={t("close")}
                 >
                   ×
                 </button>

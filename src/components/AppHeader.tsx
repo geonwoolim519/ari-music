@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import { Logo } from "./Icons";
+import { useT } from "../store/localeStore";
+import { useProfileStore } from "../store/profileStore";
 
 export function AppHeader() {
+  const t = useT();
+  const name = useProfileStore((state) => state.name);
+  const photo = useProfileStore((state) => state.photo);
+
   return (
     <header className="flex items-center justify-between px-[18px] pt-[14px] pb-[6px]">
       <div className="flex items-center gap-[8px]">
@@ -12,10 +18,14 @@ export function AppHeader() {
       </div>
       <Link
         to="/profile"
-        className="flex h-[38px] w-[38px] items-center justify-center rounded-full bg-[#cfcfcf] text-[13px] font-semibold text-[#333]"
-        aria-label="마이페이지"
+        className="flex h-[38px] w-[38px] items-center justify-center overflow-hidden rounded-full bg-[#cfcfcf] text-[13px] font-semibold text-[#333]"
+        aria-label={t("myPageAria")}
       >
-        아리
+        {photo ? (
+          <img src={photo} alt="" className="h-full w-full object-cover" />
+        ) : (
+          name.slice(0, 2)
+        )}
       </Link>
     </header>
   );

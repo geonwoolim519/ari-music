@@ -172,3 +172,45 @@ export function FingerIcon({ size = 20 }: { size?: number }) {
     </svg>
   );
 }
+
+export function PencilIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M14.4 5.2 18.8 9.6 8.2 20.2H3.8v-4.4L14.4 5.2Z"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12.8 6.8 17.2 11.2"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function PhotoIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <rect
+        x="3.2"
+        y="5.4"
+        width="17.6"
+        height="13.2"
+        rx="2.2"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M3.6 16.4 8.2 11.4l3.4 3.4 3.2-4.2 5.4 5.8"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+      <circle cx="8.4" cy="9.2" r="1.4" fill="currentColor" />
+    </svg>
+  );
+}

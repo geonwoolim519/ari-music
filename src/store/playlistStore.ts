@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import type { Track } from "../data/albums";
+import { t } from "./localeStore";
 
 export const PLAYLISTS = [
   { id: 1, name: "플레이리스트 1" },
@@ -26,8 +27,7 @@ export const usePlaylistStore = create<PlaylistState>((set, get) => ({
   openAddSheet: (track) => set({ pendingTrack: track }),
   closeAddSheet: () => set({ pendingTrack: null }),
   addToPlaylist: (track, playlistId = 1) => {
-    const name =
-      PLAYLISTS.find((item) => item.id === playlistId)?.name ?? "플레이리스트 1";
+    const name = t("playlistN", { n: playlistId });
     const current = get().lists[playlistId];
     const exists = current.some((item) => item.id === track.id);
     set({
@@ -35,7 +35,9 @@ export const usePlaylistStore = create<PlaylistState>((set, get) => ({
         ? get().lists
         : { ...get().lists, [playlistId]: [...current, track] },
       pendingTrack: null,
-      toast: exists ? `이미 ${name}에 있습니다` : `${name}에 추가되었습니다`,
+      toast: exists
+        ? t("alreadyInPlaylist", { name })
+        : t("addedToPlaylist", { name }),
     });
     window.setTimeout(() => {
       if (get().toast) set({ toast: null });

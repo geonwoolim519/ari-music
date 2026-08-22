@@ -26,6 +26,26 @@ body {
   user-select: none;
 }
 
+html[lang="en"] [class*="tracking-[-0.06em]"] {
+  letter-spacing: -0.015em;
+}
+
+html[lang="en"] [class*="tracking-[-0.05em]"] {
+  letter-spacing: -0.012em;
+}
+
+html[lang="en"] [class*="tracking-[-0.04em]"] {
+  letter-spacing: -0.01em;
+}
+
+html[lang="en"] [class*="tracking-[-0.03em]"] {
+  letter-spacing: -0.005em;
+}
+
+html[lang="en"] [class*="tracking-[-0.02em]"] {
+  letter-spacing: 0;
+}
+
 @media (min-width: 640px) {
   body {
     background: #ff4d4d;

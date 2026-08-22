@@ -1,7 +1,8 @@
-import { getAlbum } from "../data/albums";
+import { getAlbum, trackTitle } from "../data/albums";
 import { useAlbumChrome } from "../hooks/useAlbumChrome";
 import { usePlayerStore } from "../store/playerStore";
 import { useUiStore } from "../store/uiStore";
+import { useLocaleStore, useT } from "../store/localeStore";
 
 export function MiniPlayer() {
   const currentTrack = usePlayerStore((state) => state.currentTrack);
@@ -11,6 +12,8 @@ export function MiniPlayer() {
   const nextTrack = usePlayerStore((state) => state.nextTrack);
   const openLyrics = useUiStore((state) => state.openLyrics);
   const pageAlbum = useAlbumChrome();
+  const t = useT();
+  const locale = useLocaleStore((state) => state.locale);
 
   if (!visible || !currentTrack) return null;
 
@@ -37,12 +40,12 @@ export function MiniPlayer() {
             className="h-[40px] w-[40px] rounded-full object-cover"
           />
           <span className={`truncate text-[15px] font-semibold ${controlColor}`}>
-            {currentTrack.title}
+            {trackTitle(currentTrack, locale)}
           </span>
         </button>
         <button
           type="button"
-          aria-label={isPlaying ? "일시정지" : "재생"}
+          aria-label={isPlaying ? t("pause") : t("play")}
           className={`grid h-[40px] w-[36px] place-items-center ${controlColor}`}
           onClick={togglePlay}
         >
@@ -59,7 +62,7 @@ export function MiniPlayer() {
         </button>
         <button
           type="button"
-          aria-label="다음 곡"
+          aria-label={t("nextTrack")}
           className={`mr-[6px] grid h-[40px] w-[36px] place-items-center ${controlColor}`}
           onClick={nextTrack}
         >

@@ -1,13 +1,23 @@
 import { Link } from "react-router-dom";
+import { useT } from "../store/localeStore";
+import { useProfileStore } from "../store/profileStore";
 
 export function ProfileBadge() {
+  const t = useT();
+  const name = useProfileStore((state) => state.name);
+  const photo = useProfileStore((state) => state.photo);
+
   return (
     <Link
       to="/profile"
-      className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full bg-[#d0d0d0] text-[13px] font-semibold text-[#222]"
-      aria-label="마이페이지"
+      className="flex h-[38px] w-[38px] shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#d0d0d0] text-[13px] font-semibold text-[#222]"
+      aria-label={t("myPageAria")}
     >
-      아리
+      {photo ? (
+        <img src={photo} alt="" className="h-full w-full object-cover" />
+      ) : (
+        name.slice(0, 2)
+      )}
     </Link>
   );
 }
