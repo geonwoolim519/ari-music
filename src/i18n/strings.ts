@@ -38,6 +38,8 @@ export const messages = {
     mapSubtitle:
       "한국의 3대 아리랑의 발상지인 정선·밀양·진도의 아리랑 관련 헤리티지를 확인하고, 다른 향토 아리랑에 대해 탐색해보세요.",
     mapAlt: "한반도 아리랑 문화지도",
+    viewMap: "지도 보기",
+    viewSite: "사이트 보기",
     clearStudio: "비우기",
     studioCount: "{n} / {max} 소리 올림",
     studioHint1: "아래 소리를 눌러 자리에 올려 보세요.",
@@ -97,7 +99,7 @@ export const messages = {
     intro: "About Ari Music",
     manual: "How to use",
     history: "What is Arirang",
-    cultureMap: "Culture Map",
+    cultureMap: "Arirang Map",
     regionalAlbums: "Regional albums",
     archive: "Performance archive",
     play: "Play",
@@ -112,7 +114,9 @@ export const messages = {
     board: "Boards",
     mapSubtitle:
       "Tap a pin to explore the birthplaces of Korea’s three major Arirangs — Jeongseon, Miryang, and Jindo — and other local Arirangs.",
-    mapAlt: "Culture map of the Korean peninsula",
+    mapAlt: "Arirang map of the Korean peninsula",
+    viewMap: "View map",
+    viewSite: "Visit site",
     clearStudio: "Clear",
     studioCount: "{n} / {max} sounds",
     studioHint1: "Tap a sound below to place it on a performer.",
@@ -136,7 +140,7 @@ export const messages = {
     manual2:
       "In the Studio, layer Korean instruments and jangdan to make your own mix.",
     manual3:
-      "Open History and the Culture Map to see how the songs were passed down.",
+      "Open History and the Arirang Map to see how the songs were passed down.",
     manual4:
       "Compare the songs, feel their melodies and rhythms, and step into Korean traditional music.",
     introP1:

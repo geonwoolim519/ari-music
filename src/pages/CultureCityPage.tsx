@@ -29,6 +29,7 @@ export function CultureCityPage() {
   const navigate = useNavigate();
   const city = getCultureCity(cityId ?? "");
   const locale = useLocaleStore((state) => state.locale);
+  const t = useT();
 
   if (!city) {
     return (
@@ -76,7 +77,7 @@ export function CultureCityPage() {
         <MapBackButton onClick={() => navigate("/map")} />
         <h1 className="text-center text-[17px] font-extrabold leading-[1.25] tracking-[-0.03em] text-black">
           {locale === "en"
-            ? `${city.nameEn} Culture Map`
+            ? `${city.nameEn} Arirang Map`
             : `${city.name}아리랑 문화지도`}
         </h1>
       </header>
@@ -109,7 +110,7 @@ export function CultureCityPage() {
                       rel="noreferrer"
                       className="mt-[2px] shrink-0 text-[11px] font-semibold text-[#888]"
                     >
-                      {place.linkLabel}
+                      {place.linkLabel === "사이트 보기" ? t("viewSite") : t("viewMap")}
                     </a>
                   </div>
                   <p className="mt-[8px] text-[12px] leading-[1.65] tracking-[-0.02em] text-[#222]">
