@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { cityName, getCultureCity } from "../data/cultureMap";
+import { getCultureCity } from "../data/cultureMap";
 import { useLocaleStore, useT } from "../store/localeStore";
 
 function MapBackButton({ onClick }: { onClick: () => void }) {
