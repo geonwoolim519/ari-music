@@ -1,4 +1,4 @@
-const CACHE = "ari-music-v2";
+const CACHE = "ari-music-v3";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
