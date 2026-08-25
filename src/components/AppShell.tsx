@@ -24,7 +24,7 @@ export function AppShell() {
         } as React.CSSProperties
       }
     >
-      <div className="relative h-[100dvh] w-full overflow-hidden bg-white sm:h-[min(844px,calc(100dvh-48px))] sm:max-w-[390px] sm:rounded-[40px] sm:shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
+      <div className="relative box-border h-[100dvh] w-full overflow-hidden bg-white pt-[env(safe-area-inset-top)] sm:h-[min(844px,calc(100dvh-48px))] sm:max-w-[390px] sm:rounded-[40px] sm:pt-0 sm:shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
         <div className="h-full">
           <Outlet />
         </div>

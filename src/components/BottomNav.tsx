@@ -19,8 +19,9 @@ export function BottomNav() {
 
   return (
     <nav
-      className={`pointer-events-auto absolute inset-x-[16px] bottom-[12px] z-20 flex h-[58px] items-center justify-between rounded-full px-[26px] shadow-[0_8px_20px_rgba(0,0,0,0.16)] ${themed ? "text-white" : "text-black"}`}
+      className={`pointer-events-auto absolute inset-x-[16px] z-20 flex h-[58px] items-center justify-between rounded-full px-[26px] shadow-[0_8px_20px_rgba(0,0,0,0.16)] ${themed ? "text-white" : "text-black"}`}
       style={{
+        bottom: "max(12px, calc(env(safe-area-inset-bottom, 0px) + 4px))",
         background: themed ? `${pageAlbum?.bar ?? "#3F3610"}e6` : "#c8c8c8",
       }}
     >
