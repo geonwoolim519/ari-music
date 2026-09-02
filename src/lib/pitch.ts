@@ -1,4 +1,4 @@
-export function detectPitchHz(buf: Float32Array, sampleRate: number) {
+export function detectPitchHz(buf: ArrayLike<number>, sampleRate: number) {
   let rms = 0;
   for (let i = 0; i < buf.length; i += 1) rms += buf[i] * buf[i];
   rms = Math.sqrt(rms / buf.length);
