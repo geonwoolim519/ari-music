@@ -73,10 +73,6 @@ export function IntroModal() {
                     <span className="mt-[7px] h-[6px] w-[6px] shrink-0 rounded-full bg-[#ff7a3d]" />
                     <span>{t("introFeatureAlbum")}</span>
                   </li>
-                  <li className="flex gap-[8px]">
-                    <span className="mt-[7px] h-[6px] w-[6px] shrink-0 rounded-full bg-[#ff7a3d]" />
-                    <span>{t("introFeatureArchive")}</span>
-                  </li>
                 </ul>
               </div>
             </div>

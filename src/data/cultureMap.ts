@@ -77,7 +77,7 @@ export const cultureCities: CultureCity[] = [
           "매년 9월~10월에 개최되는, 아리랑 중 국내 최초로 무형문화재(강원도 무형문화재 제1호)로 지정된 정선아리랑의 가치를 지키기 위해 시작된 유서 깊은 축제입니다. 1976년부터 시작됐습니다.",
         url: "https://arirangfestival.kr/",
         category: "축제",
-        linkLabel: "지도 보기",
+        linkLabel: "사이트 보기",
         thumbnail: asset("culture/jeongseon/arirang-festival.jpg?v=3"),
       },
       {

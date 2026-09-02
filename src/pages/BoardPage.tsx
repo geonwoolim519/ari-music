@@ -1,5 +1,4 @@
 import { Link, useParams } from "react-router-dom";
-import { ProfileBadge } from "../components/LibraryChrome";
 import { getBoard, type BoardId } from "../data/boards";
 import { useCommunityStore } from "../store/communityStore";
 
@@ -45,11 +44,8 @@ export function BoardPage() {
 
   return (
     <div className="relative flex h-full flex-col bg-white">
-      <header className="px-[22px] pt-[14px]">
-        <div className="flex justify-end">
-          <ProfileBadge />
-        </div>
-        <h1 className="mt-[10px] text-[28px] font-extrabold leading-[1.25] tracking-[-0.05em] text-black">
+      <header className="px-[22px] pt-[16px]">
+        <h1 className="text-[28px] font-extrabold leading-[1.25] tracking-[-0.05em] text-black">
           {board.name}
         </h1>
       </header>

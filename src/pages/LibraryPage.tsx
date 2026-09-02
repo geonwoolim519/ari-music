@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { DashedRule, ListFolderIcon, ProfileBadge } from "../components/LibraryChrome";
+import { DashedRule, ListFolderIcon } from "../components/LibraryChrome";
 import { PLAYLISTS } from "../store/playlistStore";
 import { useT } from "../store/localeStore";
 
@@ -9,11 +9,10 @@ export function LibraryPage() {
 
   return (
     <div className="flex h-full flex-col bg-white">
-      <header className="flex items-center justify-between px-[22px] pt-[16px] pb-[4px]">
+      <header className="px-[22px] pt-[16px] pb-[4px]">
         <h1 className="text-[34px] font-extrabold tracking-[-0.06em] text-black">
           {t("library")}
         </h1>
-        <ProfileBadge />
       </header>
 
       <div className="px-[22px] pb-[160px] pt-[18px]">

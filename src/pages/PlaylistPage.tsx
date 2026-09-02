@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { usePlayerStore } from "../store/playerStore";
 import { PLAYLISTS, usePlaylistStore, type PlaylistId } from "../store/playlistStore";
-import { DashedRule, ProfileBadge, VinylIcon } from "../components/LibraryChrome";
+import { DashedRule, VinylIcon } from "../components/LibraryChrome";
 import { trackTitle } from "../data/albums";
 import { useLocaleStore, useT } from "../store/localeStore";
 
@@ -27,11 +27,10 @@ export function PlaylistPage() {
 
   return (
     <div className="flex h-full flex-col bg-white">
-      <header className="flex items-center justify-between px-[22px] pt-[16px] pb-[4px]">
+      <header className="px-[22px] pt-[16px] pb-[4px]">
         <h1 className="text-[32px] font-extrabold tracking-[-0.06em] text-black">
           {t("playlistN", { n: playlist.id })}
         </h1>
-        <ProfileBadge />
       </header>
 
       <div className="phone-scroll flex-1 overflow-y-auto px-[22px] pb-[160px] pt-[20px]">

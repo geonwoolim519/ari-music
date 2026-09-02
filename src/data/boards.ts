@@ -1,5 +1,5 @@
 export const boards = [
-  { id: "studio", name: "아리랑스튜디오게시판" },
+  { id: "studio", name: "아리랑노래방게시판" },
   { id: "album", name: "아리랑앨범게시판" },
   { id: "free", name: "한국문화게시판" },
 ] as const;

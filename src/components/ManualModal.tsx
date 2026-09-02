@@ -17,12 +17,12 @@ function HeadphonesIcon() {
   );
 }
 
-function NoteIcon() {
+function MicIcon() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M9.2 18.4V8.6L19 6.4v9.6" stroke="#FF4D4D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="7.4" cy="18.4" r="2.5" stroke="#FF4D4D" strokeWidth="1.8" />
-      <circle cx="17.2" cy="16" r="2.5" stroke="#FF4D4D" strokeWidth="1.8" />
+      <rect x="10.4" y="12.2" width="3.2" height="7.2" rx="1.6" stroke="#FF4D4D" strokeWidth="1.8" />
+      <ellipse cx="12" cy="8.4" rx="4.2" ry="4.8" stroke="#FF4D4D" strokeWidth="1.8" />
+      <path d="M9 7.2h6M8.6 9.4h6.8M9 11.4h6" stroke="#FF4D4D" strokeWidth="1.3" />
     </svg>
   );
 }
@@ -98,7 +98,7 @@ export function ManualModal() {
               </div>
 
               <ul className="flex flex-col gap-[22px]">
-                {[HeadphonesIcon, NoteIcon, BookIcon, BulbIcon].map((Icon, index) => (
+                {[HeadphonesIcon, MicIcon, BookIcon, BulbIcon].map((Icon, index) => (
                   <li key={guideKeys[index]} className="flex items-start gap-[14px]">
                     <span className="grid h-[48px] w-[48px] shrink-0 place-items-center rounded-full bg-[#EFEFEF]">
                       <Icon />

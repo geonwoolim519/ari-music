@@ -7,7 +7,9 @@ export type AlbumId =
   | "miryang"
   | "jeongseon"
   | "gangwon"
-  | "hyundai";
+  | "hyundai"
+  | "minyo"
+  | "world";
 
 export type Track = {
   id: string;
@@ -154,6 +156,14 @@ export const albums: Album[] = [
         audioUrl: asset("audio/miryang/miryang-arirang-ungsan.mp3"),
         lyrics: miryangUngsanLyrics,
       },
+      {
+        id: "miryang-arirang-goyujin",
+        title: "밀양아리랑 (고유진 가창 ver.)",
+        titleEn: "Miryang Arirang (Go Yu-jin ver.)",
+        albumId: "miryang",
+        audioUrl: asset("audio/miryang/miryang-arirang-goyujin.mp3"),
+        lyrics: placeholderLyrics,
+      },
     ],
   },
   {
@@ -168,6 +178,7 @@ export const albums: Album[] = [
       "긴아리랑은 가장 느리고 길게 늘지는 소리입니다. 정선아리랑의 기본이 되는 형태로, 한 마디를 길고 구성지게 뽑아내며 깊은 그리움이나 애절한 감정을 표현합니다.",
       "엮음아리랑은 긴사설(가사)을 빠른 가락으로 촘촘히 엮어서 부르는 소리입니다. 일상생활의 온갖 사연, 재치 있는 이야기, 한탄 등을 숨도 쉴 새 없이 빠르게 쏟아내듯 부르다가 마지막에 높은 소리로 마무리합니다.",
       "뗏목아리랑은 과거 정선 아우라지에서 서울(마포)까지 뗏목을 타고 목재를 운반하던 뱃사공들이 부르던 소리입니다. 거친 물살을 헤치며 나아가던 삶의 애환과 고달픔이 녹아 있는 노동요 성격의 노래입니다.",
+      "2013년 발매된 국악 크로스오버 장르의 컴필레이션 앨범 <정선아리랑, 세상을 품다>의 수록곡 중 클래식 편곡의 '아리랑 판타지아', 힙합 편곡의 '나의 아리랑'을 통해 아리랑의 다양한 음악적 색채를 즐길 수 있습니다.",
     ],
     tracks: [
       {
@@ -192,6 +203,22 @@ export const albums: Album[] = [
         titleEn: "Jeongseon Arirang (Raft Arirang)",
         albumId: "jeongseon",
         audioUrl: asset("audio/jeongseon/jeongseon-ttaetmok.mp3"),
+        lyrics: placeholderLyrics,
+      },
+      {
+        id: "arirang-fantasia",
+        title: "아리랑 판타지아",
+        titleEn: "Arirang Fantasia",
+        albumId: "jeongseon",
+        audioUrl: asset("audio/jeongseon/arirang-fantasia.mp3"),
+        lyrics: placeholderLyrics,
+      },
+      {
+        id: "my-arirang",
+        title: "나의 아리랑",
+        titleEn: "My Arirang",
+        albumId: "jeongseon",
+        audioUrl: asset("audio/jeongseon/my-arirang.mp3"),
         lyrics: placeholderLyrics,
       },
     ],
@@ -250,6 +277,7 @@ export const albums: Album[] = [
       "이번 <현대 아리랑> 앨범은 오늘날을 살아가는 우리에게 승리와 희망, 그리고 뜨거운 울림을 전하는 다채로운 현대적 편곡 트랙들로 구성되어 있습니다.",
       "‘아리랑 응원가 (국민 ver.)’은 국가대표 경기나 대규모 길거리 응원전에서 전 국민이 한목소리로 목놓아 부르던 뜨거운 에너지의 응원가입니다.",
       "‘아리랑 응원가 (윤도현 가창 ver.)’은 대한민국을 대표하는 록 밴드 YB의 보컬 윤도현 특유의 시원하고 파워풀한 음색이 돋보이는 트랙입니다.",
+      "‘광복군 아리랑’은 1940년, 대한민국 임시정부 산하 한국광복군이 창설되면서 공식 군가로 지정되었습니다. 조국을 떠나는 아픔, 광복의 간절함, 국내 진공 작전에 대한 결의가 담겨 있습니다.",
     ],
     tracks: [
       {
@@ -276,9 +304,130 @@ export const albums: Album[] = [
         audioUrl: asset("audio/hyundai/cheer-gayageum.mp3"),
         lyrics: placeholderLyrics,
       },
+      {
+        id: "gwangbokgun-arirang",
+        title: "광복군 아리랑",
+        titleEn: "Gwangbokgun Arirang",
+        albumId: "hyundai",
+        audioUrl: asset("audio/hyundai/gwangbokgun-arirang.mp3"),
+        lyrics: placeholderLyrics,
+      },
     ],
   },
 ];
+
+export const gugakAlbums: Album[] = [
+  {
+    id: "minyo",
+    name: "한국 민요",
+    nameEn: "Korean Folk Songs",
+    cover: asset("covers/minyo.jpg"),
+    hero: asset("covers/minyo-hero.jpg"),
+    theme: "#5C4A52",
+    bar: "#2F262A",
+    description: [
+      "풍물과 민요 가락을 중심으로, 한국의 전통 연주를 모은 앨범입니다.",
+    ],
+    tracks: [
+      {
+        id: "ganggangsullae",
+        title: "강강술래",
+        titleEn: "Ganggangsullae",
+        albumId: "minyo",
+        audioUrl: asset("audio/minyo/ganggangsullae.mp3"),
+        lyrics: placeholderLyrics,
+      },
+      {
+        id: "taepyeongga",
+        title: "태평가",
+        titleEn: "Taepyeongga",
+        albumId: "minyo",
+        audioUrl: asset("audio/minyo/taepyeongga.mp3"),
+        lyrics: placeholderLyrics,
+      },
+      {
+        id: "doraji-taryeong",
+        title: "도라지타령",
+        titleEn: "Doraji Taryeong",
+        albumId: "minyo",
+        audioUrl: asset("audio/minyo/doraji-taryeong.mp3"),
+        lyrics: placeholderLyrics,
+      },
+      {
+        id: "kkaturi-taryeong",
+        title: "까투리타령",
+        titleEn: "Kkaturi Taryeong",
+        albumId: "minyo",
+        audioUrl: asset("audio/minyo/kkaturi-taryeong.mp3"),
+        lyrics: placeholderLyrics,
+      },
+      {
+        id: "hangangsu-taryeong",
+        title: "한강수타령",
+        titleEn: "Hangangsu Taryeong",
+        albumId: "minyo",
+        audioUrl: asset("audio/minyo/hangangsu-taryeong.mp3"),
+        lyrics: placeholderLyrics,
+      },
+    ],
+  },
+  {
+    id: "world",
+    name: "세계 음악",
+    nameEn: "World Music",
+    cover: asset("covers/world.jpg"),
+    hero: asset("covers/world-hero.jpg"),
+    theme: "#B58872",
+    bar: "#4A342C",
+    description: [
+      "여러 나라의 기악 연주를 모은 앨범입니다.",
+    ],
+    tracks: [
+      {
+        id: "la-cumparsita",
+        title: "라쿰파르시타",
+        titleEn: "La Cumparsita",
+        albumId: "world",
+        audioUrl: asset("audio/world/la-cumparsita.mp3"),
+        lyrics: placeholderLyrics,
+      },
+      {
+        id: "lorelei",
+        title: "로렐라이",
+        titleEn: "Lorelei",
+        albumId: "world",
+        audioUrl: asset("audio/world/lorelei.mp3"),
+        lyrics: placeholderLyrics,
+      },
+      {
+        id: "romance",
+        title: "로망스",
+        titleEn: "Romance",
+        albumId: "world",
+        audioUrl: asset("audio/world/romance.mp3"),
+        lyrics: placeholderLyrics,
+      },
+      {
+        id: "oh-susanna",
+        title: "오 수잔나",
+        titleEn: "Oh Susanna",
+        albumId: "world",
+        audioUrl: asset("audio/world/oh-susanna.mp3"),
+        lyrics: placeholderLyrics,
+      },
+      {
+        id: "clementine",
+        title: "클레멘타인",
+        titleEn: "Clementine",
+        albumId: "world",
+        audioUrl: asset("audio/world/clementine.mp3"),
+        lyrics: placeholderLyrics,
+      },
+    ],
+  },
+];
+
+export const allAlbums: Album[] = [...albums, ...gugakAlbums];
 
 export function albumName(album: Album, locale: "ko" | "en") {
   return locale === "en" ? album.nameEn : album.name;
@@ -289,11 +438,11 @@ export function trackTitle(track: Track, locale: "ko" | "en") {
 }
 
 export function getAlbum(id: AlbumId) {
-  return albums.find((album) => album.id === id);
+  return allAlbums.find((album) => album.id === id);
 }
 
 export function getTrack(trackId: string) {
-  for (const album of albums) {
+  for (const album of allAlbums) {
     const track = album.tracks.find((item) => item.id === trackId);
     if (track) return { track, album };
   }
@@ -311,15 +460,29 @@ export const TRACK_DURATION: Record<string, number> = {
   "miryang-arirang": 300,
   "miryang-arirang-sorikkun": 139,
   "miryang-arirang-ungsan": 227,
+  "miryang-arirang-goyujin": 308,
   "jeongseon-gin": 354,
   "jeongseon-yeokkeum": 445,
   "jeongseon-ttaetmok": 785,
+  "arirang-fantasia": 228,
+  "my-arirang": 220,
   "gangwon-arirang": 72,
   "gangwon-arirang-jangdan": 87,
   "gangwon-arirang-piano": 76,
   "cheer-national": 200,
   "cheer-yoon": 201,
   "cheer-gayageum": 202,
+  "gwangbokgun-arirang": 249,
+  "la-cumparsita": 123,
+  lorelei: 83,
+  romance: 110,
+  "oh-susanna": 79,
+  clementine: 109,
+  ganggangsullae: 72,
+  taepyeongga: 62,
+  "doraji-taryeong": 101,
+  "kkaturi-taryeong": 92,
+  "hangangsu-taryeong": 54,
 };
 
 export function getTrackDuration(track: Track) {

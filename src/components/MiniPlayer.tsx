@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import { getAlbum, trackTitle } from "../data/albums";
 import { useAlbumChrome } from "../hooks/useAlbumChrome";
 import { usePlayerStore } from "../store/playerStore";
@@ -5,6 +6,7 @@ import { useUiStore } from "../store/uiStore";
 import { useLocaleStore, useT } from "../store/localeStore";
 
 export function MiniPlayer() {
+  const { pathname } = useLocation();
   const currentTrack = usePlayerStore((state) => state.currentTrack);
   const isPlaying = usePlayerStore((state) => state.isPlaying);
   const visible = usePlayerStore((state) => state.isMiniPlayerVisible);
@@ -15,7 +17,7 @@ export function MiniPlayer() {
   const t = useT();
   const locale = useLocaleStore((state) => state.locale);
 
-  if (!visible || !currentTrack) return null;
+  if (pathname.startsWith("/studio") || !visible || !currentTrack) return null;
 
   const album = getAlbum(currentTrack.albumId);
   const themed = Boolean(pageAlbum);

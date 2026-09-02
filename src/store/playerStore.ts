@@ -59,6 +59,7 @@ type PlayerState = {
   seek: (time: number) => void;
   clearSeek: () => void;
   setPlaybackTime: (currentTime: number, duration?: number) => void;
+  pausePlayback: () => void;
 };
 
 function queueFor(track: Track, queue?: Track[]) {
@@ -164,4 +165,5 @@ export const usePlayerStore = create<PlayerState>((set, get) => ({
       duration: duration && Number.isFinite(duration) && duration > 0 ? duration : get().duration,
     });
   },
+  pausePlayback: () => set({ isPlaying: false }),
 }));

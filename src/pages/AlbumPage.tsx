@@ -50,18 +50,7 @@ export function AlbumPage() {
       </div>
 
       <div className="flex min-h-0 flex-1 flex-col items-center px-[22px] pt-[22px] pb-[160px]">
-        <button
-          type="button"
-          className="flex h-[48px] w-[148px] shrink-0 items-center justify-center gap-[8px] rounded-full bg-white text-[17px] font-extrabold text-black"
-          onClick={() => playTrack(album.tracks[0])}
-        >
-          <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor" className="shrink-0" aria-hidden>
-            <path d="M1.2 1.1v13.8L13 8 1.2 1.1Z" />
-          </svg>
-          {t("play")}
-        </button>
-
-        <ul className="mt-[16px] w-full">
+        <ul className="w-full">
           {album.tracks.map((track, index) => (
             <li key={track.id} className="border-b border-white/55">
               <div className="flex items-center justify-between py-[14px]">

@@ -55,11 +55,6 @@ export function AlbumDescModal({ album, open, onClose }: Props) {
                   {text}
                 </p>
               ))}
-              <img
-                src={album.hero}
-                alt=""
-                className="mt-[10px] w-full rounded-[10px] object-cover"
-              />
             </div>
           </motion.div>
         </motion.div>
