@@ -215,7 +215,7 @@ export function StudioPage() {
         <h1 className="text-[17px] font-extrabold tracking-[-0.03em]">{t("studioTitle")}</h1>
       </header>
 
-      <div className="flex min-h-0 flex-1 flex-col px-[20px] pb-[130px] pt-[8px]">
+      <div className="flex min-h-0 flex-1 flex-col px-[20px] pb-[max(24px,env(safe-area-inset-bottom))] pt-[8px]">
         <p className="text-center text-[13px] font-medium tracking-[0.18em] text-[#ff8fb0]">
           {locale === "en" ? bonjoKaraoke.titleEn : bonjoKaraoke.title}
         </p>
@@ -319,7 +319,7 @@ export function StudioPage() {
       </div>
 
       {result ? (
-        <div className="absolute inset-0 z-40 grid place-items-center bg-[#14061f]/82 px-[28px] pb-[80px]">
+        <div className="absolute inset-0 z-40 grid place-items-center bg-[#14061f]/82 px-[28px]">
           <div className="w-full rounded-[28px] bg-white px-[22px] py-[28px] text-center text-[#1a1a1a]">
             <p className="text-[13px] font-semibold tracking-[0.12em] text-[#ff4d8a]">
               {t("karaokeScore")}

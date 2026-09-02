@@ -12,6 +12,8 @@ export function BottomNav() {
   const onHome = pathname === "/";
   const onCommunity = pathname.startsWith("/community");
 
+  if (pathname.startsWith("/studio")) return null;
+
   const tabClass = (active: boolean) =>
     `grid h-[40px] w-[40px] place-items-center ${
       themed ? "" : active ? "opacity-100" : "opacity-45"
