@@ -120,7 +120,7 @@ export function useKaraokeMix() {
     if (!pitchBufRef.current || pitchBufRef.current.length !== analyser.fftSize) {
       pitchBufRef.current = new Float32Array(analyser.fftSize);
     }
-    analyser.getFloatTimeDomainData(pitchBufRef.current);
+    analyser.getFloatTimeDomainData(pitchBufRef.current as Float32Array<ArrayBuffer>);
     return detectPitchHz(pitchBufRef.current, ctx.sampleRate);
   };
 
