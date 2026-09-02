@@ -33,7 +33,7 @@ export function CultureCityPage() {
 
   if (!city) {
     return (
-      <div className="flex h-full flex-col bg-white px-[22px] pt-[20px]">
+      <div className="flex h-full flex-col bg-white px-[22px] pt-[calc(var(--sat)+20px)]">
         <p>문화지도를 찾을 수 없습니다.</p>
         <Link to="/map" className="mt-[12px] text-[#FF4D4D]">
           지도로
@@ -45,7 +45,7 @@ export function CultureCityPage() {
   if (city.intro) {
     return (
       <div className="flex h-full flex-col bg-white">
-        <header className="relative flex min-h-[52px] items-center justify-center px-[48px] py-[10px]">
+        <header className="relative flex min-h-[52px] items-center justify-center px-[48px] pb-[10px] pt-[calc(var(--sat)+10px)]">
           <MapBackButton onClick={() => navigate("/map")} />
           <h1 className="text-center text-[17px] font-extrabold leading-[1.25] tracking-[-0.03em] text-black">
             {city.intro.title}
@@ -73,7 +73,7 @@ export function CultureCityPage() {
 
   return (
     <div className="flex h-full flex-col bg-white">
-      <header className="relative flex min-h-[52px] items-center justify-center px-[48px] py-[10px]">
+      <header className="relative flex min-h-[52px] items-center justify-center px-[48px] pb-[10px] pt-[calc(var(--sat)+10px)]">
         <MapBackButton onClick={() => navigate("/map")} />
         <h1 className="text-center text-[17px] font-extrabold leading-[1.25] tracking-[-0.03em] text-black">
           {locale === "en"

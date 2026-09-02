@@ -24,7 +24,7 @@ export function MiniPlayer() {
   const controlColor = themed ? "text-white" : "text-black";
 
   return (
-    <div className="pointer-events-auto absolute inset-x-[16px] bottom-[78px] z-20">
+    <div className="pointer-events-auto absolute inset-x-[16px] z-20" style={{ bottom: "var(--mini-bottom)" }}>
       <div
         className="flex h-[54px] items-center gap-[10px] rounded-full px-[8px] shadow-[0_8px_20px_rgba(0,0,0,0.18)] backdrop-blur-md"
         style={{

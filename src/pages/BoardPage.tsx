@@ -33,7 +33,7 @@ export function BoardPage() {
 
   if (!board) {
     return (
-      <div className="flex h-full flex-col bg-white px-[22px] pt-[20px]">
+      <div className="flex h-full flex-col bg-white px-[22px] pt-[calc(var(--sat)+20px)]">
         <p>게시판을 찾을 수 없습니다.</p>
         <Link to="/community" className="mt-[12px] text-[#FF4D4D]">
           게시판으로
@@ -44,7 +44,7 @@ export function BoardPage() {
 
   return (
     <div className="relative flex h-full flex-col bg-white">
-      <header className="px-[22px] pt-[16px]">
+      <header className="px-[22px] pt-[calc(var(--sat)+16px)]">
         <h1 className="text-[28px] font-extrabold leading-[1.25] tracking-[-0.05em] text-black">
           {board.name}
         </h1>

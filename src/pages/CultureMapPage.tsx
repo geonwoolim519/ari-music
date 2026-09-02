@@ -15,7 +15,7 @@ export function CultureMapPage() {
 
   return (
     <div className="flex h-full flex-col bg-white">
-      <header className="relative flex h-[52px] items-center justify-center px-[12px]">
+      <header className="relative flex h-[calc(52px+var(--sat))] items-center justify-center px-[12px] pt-[var(--sat)]">
         <button
           type="button"
           className="absolute left-[10px] grid h-[36px] w-[36px] place-items-center text-[#8a8a8a]"

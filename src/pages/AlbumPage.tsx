@@ -17,7 +17,7 @@ export function AlbumPage() {
 
   if (!album) {
     return (
-      <div className="flex h-full flex-col bg-white px-[18px] pt-[20px]">
+      <div className="flex h-full flex-col bg-white px-[18px] pt-[calc(var(--sat)+20px)]">
         <p>{t("albumNotFound")}</p>
         <Link to="/" className="mt-[12px] text-[#FF4D4D]">
           {t("goHome")}
@@ -28,7 +28,7 @@ export function AlbumPage() {
 
   return (
     <div className="flex h-full flex-col" style={{ background: album.theme }}>
-      <div className="relative h-[38%] min-h-[250px] shrink-0 overflow-hidden">
+      <div className="relative h-[min(38dvh,42%)] min-h-[200px] shrink-0 overflow-hidden">
         <img
           src={album.hero}
           alt=""

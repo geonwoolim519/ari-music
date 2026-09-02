@@ -16,7 +16,7 @@ export function PlaylistPage() {
 
   if (!playlist) {
     return (
-      <div className="flex h-full flex-col bg-white px-[22px] pt-[20px]">
+      <div className="flex h-full flex-col bg-white px-[22px] pt-[calc(var(--sat)+20px)]">
         <p>{t("playlistMissing")}</p>
         <Link to="/library" className="mt-[12px] text-[#FF4D4D]">
           {t("toLibrary")}
@@ -27,7 +27,7 @@ export function PlaylistPage() {
 
   return (
     <div className="flex h-full flex-col bg-white">
-      <header className="px-[22px] pt-[16px] pb-[4px]">
+      <header className="px-[22px] pb-[4px] pt-[calc(var(--sat)+16px)]">
         <h1 className="text-[32px] font-extrabold tracking-[-0.06em] text-black">
           {t("playlistN", { n: playlist.id })}
         </h1>

@@ -30,7 +30,7 @@ export function ProfilePage() {
 
   return (
     <div className="flex h-full flex-col bg-white">
-      <header className="relative flex items-center justify-center px-[12px] pt-[16px] pb-[10px]">
+      <header className="relative flex items-center justify-center px-[12px] pb-[10px] pt-[calc(var(--sat)+16px)]">
         <button
           type="button"
           className="absolute left-[10px] grid h-[36px] w-[36px] place-items-center text-[#9a9a9a]"

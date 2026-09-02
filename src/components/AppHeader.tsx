@@ -9,7 +9,7 @@ export function AppHeader() {
   const photo = useProfileStore((state) => state.photo);
 
   return (
-    <header className="flex items-center justify-between px-[18px] pt-[14px] pb-[6px]">
+    <header className="flex items-center justify-between px-[18px] pb-[6px] pt-[calc(var(--sat)+14px)]">
       <div className="flex items-center gap-[8px]">
         <Logo size={36} />
         <h1 className="text-[22px] font-extrabold tracking-[-0.04em] text-black">

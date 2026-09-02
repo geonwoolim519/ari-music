@@ -52,7 +52,7 @@ export function AppShell() {
       }
     >
       <div
-        className="relative box-border h-full w-full overflow-hidden pt-[env(safe-area-inset-top)] sm:h-[min(844px,calc(100dvh-48px))] sm:max-w-[390px] sm:rounded-[40px] sm:pt-0 sm:shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
+        className="relative box-border h-full w-full overflow-hidden sm:h-[min(844px,calc(100dvh-48px))] sm:max-w-[390px] sm:rounded-[40px] sm:shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
         style={{ background: shellBg }}
       >
         <div className="h-full">

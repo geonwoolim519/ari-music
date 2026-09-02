@@ -195,7 +195,7 @@ export function StudioPage() {
 
   return (
     <div className="flex h-full flex-col bg-[#14061f] text-white">
-      <header className="relative flex h-[52px] shrink-0 items-center justify-center px-[12px]">
+      <header className="relative flex h-[calc(52px+var(--sat))] shrink-0 items-center justify-center px-[12px] pt-[var(--sat)]">
         <button
           type="button"
           className="absolute left-[10px] grid h-[36px] w-[36px] place-items-center text-white/70"
