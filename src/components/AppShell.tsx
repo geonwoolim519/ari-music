@@ -15,6 +15,7 @@ import { useAlbumChrome } from "../hooks/useAlbumChrome";
 function shellBackground(pathname: string, albumTheme?: string) {
   if (albumTheme) return albumTheme;
   if (pathname.startsWith("/studio")) return "#14061f";
+  if (pathname.startsWith("/map")) return "#f3ead6";
   return "#ffffff";
 }
 

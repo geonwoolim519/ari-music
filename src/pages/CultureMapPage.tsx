@@ -8,14 +8,25 @@ import {
 } from "../data/cultureMap";
 import { useLocaleStore, useT } from "../store/localeStore";
 
+function SansuhwaWash() {
+  return (
+    <img
+      src={asset("sansuhwa-bg.jpg")}
+      alt=""
+      className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+      aria-hidden
+    />
+  );
+}
+
 export function CultureMapPage() {
   const navigate = useNavigate();
   const t = useT();
   const locale = useLocaleStore((state) => state.locale);
 
   return (
-    <div className="flex h-full flex-col bg-white">
-      <header className="relative flex h-[calc(52px+var(--sat))] items-center justify-center px-[12px] pt-[var(--sat)]">
+    <div className="map-hanji relative flex h-full flex-col overflow-hidden">
+      <header className="relative z-[2] flex h-[calc(52px+var(--sat))] items-center justify-center px-[12px] pt-[var(--sat)]">
         <button
           type="button"
           className="absolute left-[10px] grid h-[36px] w-[36px] place-items-center text-[#8a8a8a]"
@@ -37,18 +48,19 @@ export function CultureMapPage() {
         </h1>
       </header>
 
-      <p className="shrink-0 px-[22px] pb-[6px] text-center text-[12px] leading-[1.55] tracking-[-0.02em] text-[#555]">
+      <p className="relative z-[2] shrink-0 px-[22px] pb-[6px] text-center text-[12px] leading-[1.55] tracking-[-0.02em] text-[#555]">
         {t("mapSubtitle")}
       </p>
 
-      <div className="flex min-h-0 flex-1 justify-center px-[8px] pb-[96px] pt-[2px]">
+      <div className="relative flex min-h-0 flex-1 justify-center px-[8px] pb-[96px] pt-[2px]">
+        <SansuhwaWash />
         <div className="relative h-full w-max max-w-full">
           <img
             src={asset(
-              locale === "en" ? "korea-map-pins-en.png?v=2" : "korea-map-pins.png?v=3",
+              locale === "en" ? "korea-map-pins-en.png?v=4" : "korea-map-pins.png?v=4",
             )}
             alt={t("mapAlt")}
-            className="block h-full w-auto max-w-full"
+            className="relative z-[1] block h-full w-auto max-w-full"
           />
           {cultureCities.map((city) => (
             <button
