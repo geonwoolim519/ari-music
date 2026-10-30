@@ -35,13 +35,17 @@ export function AppShell() {
   useEffect(() => {
     const root = document.documentElement;
     const apply = () => {
-      const desktop = window.matchMedia("(min-width: 640px)").matches;
+      const desktop = window.matchMedia(
+        "(min-width: 640px) and (hover: hover) and (pointer: fine)",
+      ).matches;
       const color = desktop ? "#FF4D4D" : shellBg;
       root.style.backgroundColor = color;
       document.body.style.backgroundColor = color;
     };
     apply();
-    const mq = window.matchMedia("(min-width: 640px)");
+    const mq = window.matchMedia(
+      "(min-width: 640px) and (hover: hover) and (pointer: fine)",
+    );
     mq.addEventListener("change", apply);
     return () => {
       mq.removeEventListener("change", apply);
@@ -52,7 +56,7 @@ export function AppShell() {
 
   return (
     <div
-      className="flex h-full w-full items-stretch justify-center bg-[var(--shell-bg)] sm:items-center sm:bg-[var(--page-theme)] sm:p-[24px]"
+      className="desktop-shell flex h-full w-full items-stretch justify-center bg-[var(--shell-bg)]"
       style={
         {
           "--page-theme": pageAlbum?.theme ?? "#FF4D4D",
@@ -61,7 +65,7 @@ export function AppShell() {
       }
     >
       <div
-        className="relative box-border h-full w-full overflow-hidden sm:h-[min(844px,calc(100dvh-48px))] sm:max-w-[390px] sm:rounded-[40px] sm:shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
+        className="desktop-frame relative box-border h-full w-full overflow-hidden"
         style={{ background: shellBg }}
       >
         <div className="h-full min-w-0 w-full max-w-full overflow-hidden">

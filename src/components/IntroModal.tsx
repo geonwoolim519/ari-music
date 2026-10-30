@@ -12,7 +12,7 @@ export function IntroModal() {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="absolute inset-0 z-40 bg-[#FF4D4D]"
+          className="sheet-overlay absolute inset-0 z-40 bg-[#FF4D4D]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -24,13 +24,13 @@ export function IntroModal() {
             onClick={close}
           />
           <motion.div
-            className="absolute inset-x-0 bottom-0 top-[52px] overflow-hidden rounded-t-[28px] bg-white"
+            className="sheet-panel"
             initial={{ y: 40 }}
             animate={{ y: 0 }}
             exit={{ y: 40 }}
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="phone-scroll h-full overflow-y-auto px-[22px] pb-[36px] pt-[18px]">
+            <div className="sheet-body phone-scroll overflow-y-auto">
               <div className="relative mb-[18px] flex items-center justify-center">
                 <h2 className="text-[20px] font-extrabold">{t("intro")}</h2>
                 <button

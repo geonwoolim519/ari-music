@@ -58,13 +58,13 @@ export function HistoryModal() {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="absolute inset-0 z-40 bg-[#FF4D4D]"
+          className="sheet-overlay absolute inset-0 z-40 bg-[#FF4D4D]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="absolute inset-x-0 bottom-0 top-[52px] overflow-hidden rounded-t-[28px] bg-white"
+            className="sheet-panel"
             initial={{ y: 40 }}
             animate={{ y: 0 }}
             exit={{ y: 40 }}
@@ -80,8 +80,8 @@ export function HistoryModal() {
               }
             }}
           >
-            <div className="phone-scroll h-full overflow-y-auto px-[22px] pb-[36px] pt-[18px]">
-              <div className="relative mb-[14px] flex h-[34px] items-center justify-center">
+            <div className="sheet-body flex flex-col">
+              <div className="relative mb-[14px] flex h-[34px] shrink-0 items-center justify-center">
                 {page > 0 ? (
                   <button
                     type="button"
@@ -105,7 +105,7 @@ export function HistoryModal() {
                 </button>
               </div>
 
-              <div className="mb-[18px]">
+              <div className="mb-[18px] shrink-0">
                 <p className="text-[12px] font-semibold tracking-[-0.02em] text-black">
                   {page + 1}/{total}
                 </p>
@@ -117,35 +117,44 @@ export function HistoryModal() {
                 </div>
               </div>
 
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={page}
-                  initial={{ opacity: 0, x: 24 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -24 }}
-                  transition={{ duration: 0.22 }}
-                >
-                  {slide.paragraphs.map((text) => (
-                    <p
-                      key={text.slice(0, 28)}
-                      className="mb-[14px] text-[14px] leading-[1.72] text-[#222]"
-                    >
-                      {text}
-                    </p>
-                  ))}
-                  {slide.quote ? (
-                    <p className="mb-[14px] text-[14px] leading-[1.72] text-[#222]">
-                      “{slide.quote}”
-                    </p>
-                  ) : null}
-                  <img src={slide.image} alt="" className={slide.imageClass} />
-                  {slide.caption ? (
-                    <p className="mt-[8px] text-center text-[14px] font-bold text-[#222]">
-                      {slide.caption}
-                    </p>
-                  ) : null}
-                </motion.div>
-              </AnimatePresence>
+              <div className="phone-scroll min-h-0 flex-1 overflow-y-auto">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={page}
+                    initial={{ opacity: 0, x: 24 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -24 }}
+                    transition={{ duration: 0.22 }}
+                    className="flex min-h-full flex-col"
+                  >
+                    {slide.paragraphs.map((text) => (
+                      <p
+                        key={text.slice(0, 28)}
+                        className="mb-[14px] shrink-0 text-[14px] leading-[1.72] text-[#222]"
+                      >
+                        {text}
+                      </p>
+                    ))}
+                    {slide.quote ? (
+                      <p className="mb-[14px] shrink-0 text-[14px] leading-[1.72] text-[#222]">
+                        “{slide.quote}”
+                      </p>
+                    ) : null}
+                    <div className="mt-[8px] flex min-h-[120px] flex-1 items-center justify-center">
+                      <img
+                        src={slide.image}
+                        alt=""
+                        className={`sheet-photo ${slide.imageClass}`}
+                      />
+                    </div>
+                    {slide.caption ? (
+                      <p className="mt-[8px] shrink-0 text-center text-[14px] font-bold text-[#222]">
+                        {slide.caption}
+                      </p>
+                    ) : null}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
             </div>
           </motion.div>
         </motion.div>

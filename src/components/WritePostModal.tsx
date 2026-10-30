@@ -35,13 +35,13 @@ export function WritePostModal() {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="absolute inset-0 z-40 bg-[#FF4D4D]"
+          className="sheet-overlay absolute inset-0 z-40 bg-[#FF4D4D]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="absolute inset-x-0 bottom-0 top-[52px] flex flex-col overflow-hidden rounded-t-[28px] bg-white"
+            className="sheet-panel flex flex-col"
             initial={{ y: 40 }}
             animate={{ y: 0 }}
             exit={{ y: 40 }}
