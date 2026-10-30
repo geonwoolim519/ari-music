@@ -35,7 +35,7 @@ export function WritePostModal() {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="absolute inset-0 z-[15] bg-[#FF4D4D]"
+          className="absolute inset-0 z-40 bg-[#FF4D4D]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -60,7 +60,7 @@ export function WritePostModal() {
               </button>
             </div>
 
-            <div className="flex min-h-0 flex-1 flex-col px-[22px] pb-[160px] pt-[18px]">
+            <div className="flex min-h-0 flex-1 flex-col px-[22px] pb-[max(24px,calc(var(--sab)+16px))] pt-[18px]">
               <input
                 value={title}
                 onChange={(event) => setTitle(event.target.value)}
@@ -72,7 +72,7 @@ export function WritePostModal() {
                 value={body}
                 onChange={(event) => setBody(event.target.value)}
                 placeholder="자유롭게 얘기해주세요."
-                className="mt-[16px] min-h-[180px] flex-1 resize-none border-none bg-transparent text-[15px] leading-[1.65] text-[#222] outline-none placeholder:text-[#b0b0b0]"
+                className="mt-[16px] min-h-[180px] flex-1 resize-none border-none bg-transparent text-[16px] leading-[1.65] text-[#222] outline-none placeholder:text-[#b0b0b0]"
               />
               <button
                 type="button"

@@ -13,51 +13,8 @@ import {
   FingerIcon,
   SectionChevron,
 } from "../components/Icons";
+import { PlaygroundBackdrop } from "../components/PlayHeroes";
 import { useLocaleStore, useT } from "../store/localeStore";
-
-function KaraokeBackdrop() {
-  return (
-    <span className="pointer-events-none absolute inset-0 overflow-hidden bg-[#1a0828]" aria-hidden>
-      <svg
-        viewBox="0 0 360 132"
-        className="absolute inset-0 h-full w-full"
-        preserveAspectRatio="xMaxYMid slice"
-      >
-        <defs>
-          <radialGradient id="karaokeGlow" cx="78%" cy="42%">
-            <stop offset="0%" stopColor="#ff5a8a" stopOpacity="0.55" />
-            <stop offset="42%" stopColor="#7b2cff" stopOpacity="0.28" />
-            <stop offset="100%" stopColor="#1a0828" stopOpacity="0" />
-          </radialGradient>
-          <linearGradient id="karaokeScreen" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#2a1a4a" />
-            <stop offset="100%" stopColor="#12081f" />
-          </linearGradient>
-          <linearGradient id="karaokeMic" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#f4f0e8" />
-            <stop offset="55%" stopColor="#c8c2b6" />
-            <stop offset="100%" stopColor="#8e877a" />
-          </linearGradient>
-        </defs>
-        <rect width="360" height="132" fill="#1a0828" />
-        <circle cx="286" cy="58" r="92" fill="url(#karaokeGlow)" />
-        <rect x="248" y="18" width="98" height="62" rx="8" fill="url(#karaokeScreen)" />
-        <rect x="248" y="18" width="98" height="62" rx="8" fill="none" stroke="#ff4d8a" strokeWidth="1.4" opacity="0.7" />
-        <path d="M262 38h52M262 50h40M262 62h28" stroke="#ffd6e8" strokeWidth="3" strokeLinecap="round" opacity="0.85" />
-        <g transform="translate(292 86) rotate(-28)">
-          <rect x="-5" y="8" width="10" height="46" rx="5" fill="url(#karaokeMic)" />
-          <ellipse cx="0" cy="4" rx="14" ry="16" fill="#2a2a2a" />
-          <ellipse cx="0" cy="4" rx="11" ry="13" fill="#111" />
-          <path d="M-8 -6h16M-9 0h18M-8 6h16" stroke="#d8d8d8" strokeWidth="1.4" />
-          <rect x="-7" y="18" width="14" height="6" rx="1.5" fill="#e8c36a" />
-        </g>
-        <circle cx="318" cy="22" r="3.2" fill="#7dffb3" />
-        <circle cx="330" cy="38" r="2.4" fill="#ffdf5a" />
-        <circle cx="244" cy="28" r="2.6" fill="#7ec8ff" />
-      </svg>
-    </span>
-  );
-}
 
 export function HomePage() {
   const navigate = useNavigate();
@@ -77,19 +34,19 @@ export function HomePage() {
         <div className="flex flex-col gap-[12px]">
           <button
             type="button"
-            onClick={() => navigate("/studio")}
-            className="relative h-[132px] overflow-hidden rounded-[28px] text-left shadow-[0_8px_18px_rgba(0,0,0,0.12)]"
+            onClick={() => navigate("/playground")}
+            className="relative h-[132px] w-full overflow-hidden rounded-[28px] text-left shadow-[0_8px_18px_rgba(0,0,0,0.12)]"
           >
-            <KaraokeBackdrop />
-            <span className="absolute inset-y-0 left-0 w-[68%] bg-gradient-to-r from-[#1a0828] via-[#1a0828]/78 to-transparent" />
-            <span className="relative z-[1] flex h-full flex-col justify-center px-[22px] pr-[88px]">
-              <span className="text-[22px] font-extrabold tracking-[-0.04em] text-white">
-                {t("studioTitle")}
+            <PlaygroundBackdrop />
+            <span className="absolute inset-y-0 left-0 w-[62%] bg-gradient-to-r from-[#102820] via-[#102820]/72 to-transparent" />
+            <span className="relative z-[1] flex h-full flex-col justify-center px-[22px] pr-[96px] pb-[12px]">
+              <span className="gugak-serif text-[21px] font-bold tracking-[-0.04em] text-[#f3e6c8]">
+                {t("playgroundTitle")}
               </span>
-              <span className="mt-[8px] text-[13px] font-medium leading-[1.45] tracking-[-0.02em] text-white/88">
-                {t("studioLine1")}
+              <span className="mt-[8px] text-[13px] font-medium leading-[1.45] tracking-[-0.02em] text-[#f3e6c8]/88">
+                {t("playgroundLine1")}
                 <br />
-                {t("studioLine2")}
+                {t("playgroundLine2")}
               </span>
             </span>
           </button>
@@ -181,7 +138,7 @@ export function HomePage() {
 
           <div
             ref={albumScrollRef}
-            className="drag-scroll -mx-[18px] flex gap-[12px] overflow-x-auto overscroll-x-contain px-[18px] pb-[2px] snap-x snap-mandatory"
+            className="drag-scroll -mx-[18px] flex gap-[12px] overflow-x-auto overscroll-x-contain px-[18px] pb-[2px] snap-x snap-proximity"
           >
             {albums.map((album) => (
               <button
@@ -215,7 +172,7 @@ export function HomePage() {
 
           <div
             ref={gugakScrollRef}
-            className="drag-scroll -mx-[18px] flex gap-[12px] overflow-x-auto overscroll-x-contain px-[18px] pb-[2px] snap-x snap-mandatory"
+            className="drag-scroll -mx-[18px] flex gap-[12px] overflow-x-auto overscroll-x-contain px-[18px] pb-[2px] snap-x snap-proximity"
           >
             {gugakAlbums.map((album) => (
               <button

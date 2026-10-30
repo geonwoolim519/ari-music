@@ -33,7 +33,7 @@ export function PlaylistPage() {
         </h1>
       </header>
 
-      <div className="phone-scroll flex-1 overflow-y-auto px-[22px] pb-[160px] pt-[20px]">
+      <div className="phone-scroll min-h-0 flex-1 overflow-y-auto px-[22px] pb-[160px] pt-[20px]">
         {items.length === 0 ? null : (
           <>
             <ul>

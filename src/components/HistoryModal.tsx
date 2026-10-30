@@ -69,6 +69,7 @@ export function HistoryModal() {
             animate={{ y: 0 }}
             exit={{ y: 40 }}
             drag="x"
+            dragDirectionLock
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.12}
             onDragEnd={(_, info) => {

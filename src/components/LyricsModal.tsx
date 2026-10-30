@@ -122,7 +122,7 @@ export function LyricsModal() {
                 ref={barRef}
                 type="button"
                 aria-label="재생 위치"
-                className="relative block h-[8px] w-full overflow-hidden rounded-full bg-white"
+                className="relative block h-[28px] w-full"
                 onPointerDown={(event) => {
                   event.stopPropagation();
                   event.currentTarget.setPointerCapture(event.pointerId);
@@ -134,10 +134,12 @@ export function LyricsModal() {
                   }
                 }}
               >
-                <span
-                  className="absolute inset-y-0 left-0 bg-black"
-                  style={{ width: `${progress * 100}%` }}
-                />
+                <span className="absolute inset-x-0 top-1/2 block h-[8px] -translate-y-1/2 overflow-hidden rounded-full bg-white">
+                  <span
+                    className="block h-full bg-black"
+                    style={{ width: `${progress * 100}%` }}
+                  />
+                </span>
               </button>
               <div className="mt-[8px] flex justify-between text-[13px] font-semibold text-white">
                 <span>{formatTime(currentTime)}</span>

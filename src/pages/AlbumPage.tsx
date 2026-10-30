@@ -49,14 +49,14 @@ export function AlbumPage() {
         </div>
       </div>
 
-      <div className="flex min-h-0 flex-1 flex-col items-center px-[22px] pt-[22px] pb-[160px]">
+      <div className="phone-scroll min-h-0 flex-1 overflow-y-auto px-[22px] pb-[160px] pt-[22px]">
         <ul className="w-full">
           {album.tracks.map((track, index) => (
             <li key={track.id} className="border-b border-white/55">
-              <div className="flex items-center justify-between py-[14px]">
+              <div className="flex items-center justify-between py-[10px]">
                 <button
                   type="button"
-                  className="min-w-0 flex-1 text-left text-[16px] font-semibold text-white"
+                  className="min-h-[44px] min-w-0 flex-1 py-[8px] text-left text-[16px] font-semibold text-white"
                   onClick={() => playTrack(track)}
                 >
                   {index + 1}. {trackTitle(track, locale)}
@@ -64,10 +64,12 @@ export function AlbumPage() {
                 <button
                   type="button"
                   aria-label={`${trackTitle(track, locale)} ${t("addToPlaylist")}`}
-                  className="grid h-[26px] w-[26px] shrink-0 place-items-center rounded-full border-[1.5px] border-white text-[18px] leading-none text-white"
+                  className="grid h-[44px] w-[44px] shrink-0 place-items-center text-[18px] leading-none text-white"
                   onClick={() => openAddSheet(track)}
                 >
-                  +
+                  <span className="grid h-[26px] w-[26px] place-items-center rounded-full border-[1.5px] border-white">
+                    +
+                  </span>
                 </button>
               </div>
             </li>

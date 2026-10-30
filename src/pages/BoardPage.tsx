@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { getBoard, type BoardId } from "../data/boards";
 import { useCommunityStore } from "../store/communityStore";
+import { useT } from "../store/localeStore";
 
 function PencilIcon() {
   return (
@@ -27,6 +28,7 @@ function PencilIcon() {
 export function BoardPage() {
   const { boardId } = useParams();
   const board = getBoard(boardId);
+  const t = useT();
   const allPosts = useCommunityStore((state) => state.posts);
   const posts = allPosts.filter((post) => post.boardId === boardId);
   const openWrite = useCommunityStore((state) => state.openWrite);
@@ -46,11 +48,11 @@ export function BoardPage() {
     <div className="relative flex h-full flex-col bg-white">
       <header className="px-[22px] pt-[calc(var(--sat)+16px)]">
         <h1 className="text-[28px] font-extrabold leading-[1.25] tracking-[-0.05em] text-black">
-          {board.name}
+          {t(board.nameKey)}
         </h1>
       </header>
 
-      <div className="phone-scroll flex-1 overflow-y-auto px-[18px] pb-[170px] pt-[18px]">
+      <div className="phone-scroll min-h-0 flex-1 overflow-y-auto px-[18px] pb-[170px] pt-[18px]">
         <ul className="flex flex-col gap-[14px]">
           {posts.map((post) => (
             <li
@@ -70,7 +72,8 @@ export function BoardPage() {
         type="button"
         aria-label="글쓰기"
         onClick={() => openWrite(board.id as BoardId)}
-        className="absolute right-[20px] bottom-[150px] grid h-[56px] w-[56px] place-items-center rounded-full bg-[#FF4D4D] shadow-[0_8px_18px_rgba(255,77,77,0.35)]"
+        className="absolute right-[20px] grid h-[56px] w-[56px] place-items-center rounded-full bg-[#FF4D4D] shadow-[0_8px_18px_rgba(255,77,77,0.35)]"
+        style={{ bottom: "calc(var(--mini-bottom) + 66px)" }}
       >
         <PencilIcon />
       </button>

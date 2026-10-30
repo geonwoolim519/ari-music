@@ -13,9 +13,12 @@ export function LibraryPage() {
         <h1 className="text-[34px] font-extrabold tracking-[-0.06em] text-black">
           {t("library")}
         </h1>
+        <p className="mt-[8px] text-[13px] font-medium leading-[1.45] tracking-[-0.02em] text-[#888]">
+          {t("librarySubtitle")}
+        </p>
       </header>
 
-      <div className="px-[22px] pb-[160px] pt-[18px]">
+      <div className="phone-scroll min-h-0 flex-1 overflow-y-auto px-[22px] pb-[160px] pt-[14px]">
         <ul>
           {PLAYLISTS.map((playlist) => (
             <li key={playlist.id}>

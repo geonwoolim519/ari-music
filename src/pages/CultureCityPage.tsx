@@ -52,7 +52,7 @@ export function CultureCityPage() {
           </h1>
         </header>
 
-        <div className="phone-scroll flex-1 overflow-y-auto px-[22px] pb-[150px] pt-[8px]">
+        <div className="phone-scroll min-h-0 flex-1 overflow-y-auto px-[22px] pb-[160px] pt-[8px]">
           {city.intro.paragraphs.map((text) => (
             <p
               key={text.slice(0, 24)}
@@ -82,7 +82,7 @@ export function CultureCityPage() {
         </h1>
       </header>
 
-      <div className="phone-scroll flex-1 overflow-y-auto px-[16px] pb-[150px] pt-[8px]">
+      <div className="phone-scroll min-h-0 flex-1 overflow-y-auto px-[16px] pb-[160px] pt-[8px]">
         <ul className="flex flex-col gap-[14px]">
           {city.places.map((place) => (
             <li

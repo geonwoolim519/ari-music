@@ -52,7 +52,7 @@ export function CultureMapPage() {
         {t("mapSubtitle")}
       </p>
 
-      <div className="relative flex min-h-0 flex-1 justify-center px-[8px] pb-[96px] pt-[2px]">
+      <div className="relative flex min-h-0 flex-1 justify-center px-[8px] pb-[160px] pt-[2px]">
         <SansuhwaWash />
         <div className="relative h-full w-max max-w-full">
           <img

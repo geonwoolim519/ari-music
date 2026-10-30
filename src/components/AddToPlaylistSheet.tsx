@@ -27,7 +27,7 @@ export function AddToPlaylistSheet() {
             onClick={closeAddSheet}
           />
           <motion.div
-            className="absolute inset-x-0 bottom-0 rounded-t-[28px] bg-white px-[22px] pb-[36px] pt-[16px]"
+            className="absolute inset-x-0 bottom-0 rounded-t-[28px] bg-white px-[22px] pb-[max(36px,calc(var(--sab)+16px))] pt-[16px]"
             initial={{ y: 40 }}
             animate={{ y: 0 }}
             exit={{ y: 40 }}

@@ -13,11 +13,21 @@ export function MiniPlayer() {
   const togglePlay = usePlayerStore((state) => state.togglePlay);
   const nextTrack = usePlayerStore((state) => state.nextTrack);
   const openLyrics = useUiStore((state) => state.openLyrics);
+  const watchingVideo = useUiStore((state) => state.watchingVideoId);
   const pageAlbum = useAlbumChrome();
   const t = useT();
   const locale = useLocaleStore((state) => state.locale);
 
-  if (pathname.startsWith("/studio") || !visible || !currentTrack) return null;
+  if (
+    pathname.startsWith("/studio") ||
+    pathname.startsWith("/incredibox") ||
+    pathname.startsWith("/workshop") ||
+    watchingVideo ||
+    !visible ||
+    !currentTrack
+  ) {
+    return null;
+  }
 
   const album = getAlbum(currentTrack.albumId);
   const themed = Boolean(pageAlbum);

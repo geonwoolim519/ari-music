@@ -10,11 +10,14 @@ import { LyricsModal } from "./LyricsModal";
 import { Toast } from "./Toast";
 import { AddToPlaylistSheet } from "./AddToPlaylistSheet";
 import { WritePostModal } from "./WritePostModal";
+import { VideoPlayerOverlay } from "./VideoPlayerOverlay";
 import { useAlbumChrome } from "../hooks/useAlbumChrome";
+import { useUiStore } from "../store/uiStore";
 
 function shellBackground(pathname: string, albumTheme?: string) {
   if (albumTheme) return albumTheme;
   if (pathname.startsWith("/studio")) return "#14061f";
+  if (pathname.startsWith("/incredibox") || pathname.startsWith("/workshop")) return "#f4ead8";
   if (pathname.startsWith("/map")) return "#f3ead6";
   return "#ffffff";
 }
@@ -23,6 +26,11 @@ export function AppShell() {
   const pageAlbum = useAlbumChrome();
   const { pathname } = useLocation();
   const shellBg = shellBackground(pathname, pageAlbum?.theme);
+  const closeVideo = useUiStore((state) => state.closeVideo);
+
+  useEffect(() => {
+    if (!pathname.startsWith("/videos")) closeVideo();
+  }, [closeVideo, pathname]);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -56,7 +64,7 @@ export function AppShell() {
         className="relative box-border h-full w-full overflow-hidden sm:h-[min(844px,calc(100dvh-48px))] sm:max-w-[390px] sm:rounded-[40px] sm:shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
         style={{ background: shellBg }}
       >
-        <div className="h-full">
+        <div className="h-full min-w-0 w-full max-w-full overflow-hidden">
           <Outlet />
         </div>
         <MiniPlayer />
@@ -67,6 +75,7 @@ export function AppShell() {
         <HistoryModal />
         <LyricsModal />
         <WritePostModal />
+        <VideoPlayerOverlay />
         <Toast />
         <AddToPlaylistSheet />
       </div>

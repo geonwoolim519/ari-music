@@ -40,6 +40,30 @@ export function HomeIcon({ size = 26 }: { size?: number }) {
   );
 }
 
+export function VideoIcon({ size = 26 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M4.2 6.2A2.4 2.4 0 0 1 6.6 3.8h10.8A2.4 2.4 0 0 1 19.8 6.2v11.6a2.4 2.4 0 0 1-2.4 2.4H6.6a2.4 2.4 0 0 1-2.4-2.4V6.2Zm6.3 3.05v5.5L15.6 12 10.5 9.25Z"
+      />
+    </svg>
+  );
+}
+
+export function LearnIcon({ size = 26 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M3.4 5.2c3.2 0 5.5.7 7.4 2.1.4.3.9.3 1.2 0 1.9-1.4 4.2-2.1 7.6-2.1h1v12.4h-1.2c-3 0-5.1.6-6.8 1.8-.4.3-.9.3-1.2 0-1.7-1.2-3.8-1.8-6.8-1.8H3.4V5.2ZM11.2 7.6h1.6v11.2h-1.6V7.6Z"
+      />
+    </svg>
+  );
+}
+
 export function FolderIcon({ size = 26 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">

@@ -29,6 +29,8 @@ export type Album = {
   theme: string;
   bar: string;
   description: string[];
+  coverNote?: string;
+  coverNoteEn?: string;
   tracks: Track[];
 };
 
@@ -50,6 +52,10 @@ export const albums: Album[] = [
       "흔히 경기아리랑을 논할 때 구아리랑과 본조아리랑을 나누어 설명합니다. 구아리랑은 강원도 아라리의 유입 초기 모습이 남아있어 예스러운 멋과 묵직한 애수가 느껴집니다.",
       "본조아리랑은 나운규의 영화 <아리랑> 주제가로 쓰이면서 전 국민적인 애창곡으로 자리 잡았으며, 우리가 보통 “아리랑” 하면 떠올리는 명랑하면서도 슬픈 3박자 가락입니다.",
     ],
+    coverNote:
+      "가을 수확철, 경기 평야는 노르스름한 논으로 가득합니다. 하늘빛이 내린 들판이 끝없이 펼쳐지고, 그 너머로 산과 도시가 나란히 앉았습니다. 가장 널리 불리게 된 경기아리랑의 땅이, 익어 가는 곡식처럼 따뜻한 빛으로 담겼습니다.",
+    coverNoteEn:
+      "In harvest season the Gyeonggi plains turn a warm gold. Ripened paddies run to the horizon, with hills and the city sitting just beyond. This is the land where Gyeonggi Arirang became the song most people know — held in the light of ripening grain.",
     tracks: [
       {
         id: "bonjo-arirang",
@@ -90,6 +96,10 @@ export const albums: Album[] = [
       "전라도 민요의 시그니처인 ‘육자배기토리’의 선율을 가지고 있습니다. 떠는 소리, 평으로 내는 소리, 꺾는 소리는 남도 사람들의 고단한 삶의 애환을 달래주는 듯합니다.",
       "가사는 삶의 서러움, 이별의 슬픔, 고단함을 노래하지만, 곡의 전반적인 분위기는 오히려 이를 훌훌 털어버리는 신명 나고 흥겨운 유흥성을 띱니다. 슬픔을 웃음과 흥으로 승화시키는 한국인의 독특한 해학이 담겨 있습니다.",
     ],
+    coverNote:
+      "표지는 진도의 바다를 바라봅니다. 남도의 물결이 섬과 하늘을 잇고, 바닷가의 석상은 그 수평선을 오래도록 지켜 섭니다. 흥과 한이 한 바다에서 만나는 진도아리랑의 풍경입니다.",
+    coverNoteEn:
+      "The cover looks out over the sea of Jindo. Southern waves join island and sky, and stone figures keep watch along the shore. Here the joy and han of Jindo Arirang meet in one stretch of water.",
     tracks: [
       {
         id: "jindo-arirang",
@@ -131,6 +141,10 @@ export const albums: Album[] = [
       "메나리토리(한반도 동부지역 음악에 나타나는 음악적 특징)를 바탕으로 한 선율구조를 가지고 있습니다. 라·도·레·미·솔의 5음계로 라에서 시작하여 라로 끝납니다.",
       "힘차게 뻗어나가는 가락을 통해 경상도 민요 특유의 흥을 느낄 수 있습니다.",
     ],
+    coverNote:
+      "밀양의 대표 문화재인 영남루가 강과 대숲 위에 올라앉아 있습니다. 겹쳐 올린 기와지붕이 물빛에 비치며, 씩씩하고 경쾌한 밀양아리랑의 기상을 한 폭의 누각으로 보여 줍니다.",
+    coverNoteEn:
+      "Yeongnamnu, Miryang’s emblematic pavilion, rises above the river and a grove of bamboo. Layered tiled roofs catch the water’s light — a picture of the bold, bright spirit of Miryang Arirang.",
     tracks: [
       {
         id: "miryang-arirang",
@@ -180,6 +194,10 @@ export const albums: Album[] = [
       "뗏목아리랑은 과거 정선 아우라지에서 서울(마포)까지 뗏목을 타고 목재를 운반하던 뱃사공들이 부르던 소리입니다. 거친 물살을 헤치며 나아가던 삶의 애환과 고달픔이 녹아 있는 노동요 성격의 노래입니다.",
       "2013년 발매된 국악 크로스오버 장르의 컴필레이션 앨범 <정선아리랑, 세상을 품다>의 수록곡 중 클래식 편곡의 '아리랑 판타지아', 힙합 편곡의 '나의 아리랑'을 통해 아리랑의 다양한 음악적 색채를 즐길 수 있습니다.",
     ],
+    coverNote:
+      "강원 정선을 가득 메운 메밀꽃입니다. 흰 물결이 산자락까지 흐드러지고, 초가 원두막이 그 한가운데 고요히 서 있습니다. 긴아리랑처럼 느리고 깊은 숨이 머무는 들입니다.",
+    coverNoteEn:
+      "A buckwheat field of Gangwon, in Jeongseon. White blossoms wash to the foot of the hills, and a thatched lookout stands quietly in their midst. The field holds the slow, deep breath of Long Arirang.",
     tracks: [
       {
         id: "jeongseon-gin",
@@ -237,6 +255,10 @@ export const albums: Album[] = [
       "엇모리장단(3·2·3·2의 혼합 리듬)과 메나리토리(미·솔·라·도·레)의 음계를 바탕으로 합니다.",
       "대표 가사 ‘아주까리 동백아 피지 마라’에는 그리움과 허전함을 해학과 애잔함으로 풀어낸 정서가 담겨 있습니다.",
     ],
+    coverNote:
+      "강원도 오대산의 단풍입니다. 붉은 능선 사이로 길이 굽이치고, 가을 산이 온통 불빛을 머금었습니다. 산간에서 이어져 온 강원도아리랑의 정서를, 가장 화려한 계절에 담았습니다.",
+    coverNoteEn:
+      "Autumn on Odaesan in Gangwon. A winding road cuts through crimson ridges, and the mountain holds fire in every leaf. The highland feeling of Gangwondo Arirang, held in its most vivid season.",
     tracks: [
       {
         id: "gangwon-arirang",
@@ -279,6 +301,10 @@ export const albums: Album[] = [
       "‘아리랑 응원가 (윤도현 가창 ver.)’은 대한민국을 대표하는 록 밴드 YB의 보컬 윤도현 특유의 시원하고 파워풀한 음색이 돋보이는 트랙입니다.",
       "‘광복군 아리랑’은 1940년, 대한민국 임시정부 산하 한국광복군이 창설되면서 공식 군가로 지정되었습니다. 조국을 떠나는 아픔, 광복의 간절함, 국내 진공 작전에 대한 결의가 담겨 있습니다.",
     ],
+    coverNote:
+      "화려한 롯데타워의 야경입니다. 한강 위로 솟은 불빛이 오늘의 서울을 밝히고, 전통 가락이 현대의 도시에서 다시 울리는 아리랑의 풍경을 그립니다.",
+    coverNoteEn:
+      "Lotte Tower at night, glittering over the Hangang. The lights of today’s Seoul rise from the river — a portrait of Arirang sounding again in a modern city.",
     tracks: [
       {
         id: "cheer-national",
@@ -431,6 +457,11 @@ export const allAlbums: Album[] = [...albums, ...gugakAlbums];
 
 export function albumName(album: Album, locale: "ko" | "en") {
   return locale === "en" ? album.nameEn : album.name;
+}
+
+export function albumCoverNote(album: Album, locale: "ko" | "en") {
+  if (locale === "en") return album.coverNoteEn ?? album.coverNote;
+  return album.coverNote;
 }
 
 export function trackTitle(track: Track, locale: "ko" | "en") {

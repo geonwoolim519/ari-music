@@ -200,7 +200,7 @@ export function StudioPage() {
           type="button"
           className="absolute left-[10px] grid h-[36px] w-[36px] place-items-center text-white/70"
           aria-label={t("back")}
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/playground")}
         >
           <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden>
             <path
@@ -250,7 +250,7 @@ export function StudioPage() {
         <button
           type="button"
           ref={barRef}
-          className="mt-[18px] block h-[8px] w-full overflow-hidden rounded-full bg-white/15"
+          className="relative mt-[18px] block h-[28px] w-full"
           aria-label={t("karaokeSeek")}
           onPointerDown={(event) => {
             event.currentTarget.setPointerCapture(event.pointerId);
@@ -261,10 +261,12 @@ export function StudioPage() {
             seekFromEvent(event.clientX);
           }}
         >
-          <span
-            className="block h-full rounded-full bg-[#ff4d8a]"
-            style={{ width: `${ratio * 100}%` }}
-          />
+          <span className="absolute inset-x-0 top-1/2 block h-[8px] -translate-y-1/2 overflow-hidden rounded-full bg-white/15">
+            <span
+              className="block h-full rounded-full bg-[#ff4d8a]"
+              style={{ width: `${ratio * 100}%` }}
+            />
+          </span>
         </button>
         <div className="mt-[6px] flex justify-between text-[11px] text-white/45">
           <span>{formatTime(time)}</span>

@@ -62,7 +62,7 @@ export function ProfilePage() {
             <button
               type="button"
               aria-label={t("editName")}
-              className="grid h-[22px] w-[22px] place-items-center"
+              className="grid h-[36px] w-[36px] place-items-center"
               onClick={() => {
                 setDraftName(name);
                 setEditing(true);
@@ -73,7 +73,7 @@ export function ProfilePage() {
             <button
               type="button"
               aria-label={t("editPhoto")}
-              className="grid h-[22px] w-[22px] place-items-center"
+              className="grid h-[36px] w-[36px] place-items-center"
               onClick={() => fileRef.current?.click()}
             >
               <PhotoIcon size={18} />
@@ -99,7 +99,7 @@ export function ProfilePage() {
         }}
       />
 
-      <div className="px-[22px] pb-[160px] pt-[8px]">
+      <div className="phone-scroll min-h-0 flex-1 overflow-y-auto px-[22px] pb-[160px] pt-[8px]">
         <h1 className="text-[34px] font-extrabold tracking-[-0.06em] text-black">
           {t("myPage")}
         </h1>
@@ -110,7 +110,7 @@ export function ProfilePage() {
               autoFocus
               value={draftName}
               placeholder={t("namePlaceholder")}
-              className="h-[40px] min-w-0 flex-1 rounded-[10px] border border-[#ddd] px-[12px] text-[15px] outline-none"
+              className="h-[44px] min-w-0 flex-1 rounded-[10px] border border-[#ddd] px-[12px] text-[16px] outline-none"
               onChange={(event) => setDraftName(event.target.value)}
               onKeyDown={(event) => {
                 if (event.key === "Enter") saveName();
